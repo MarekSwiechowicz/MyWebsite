@@ -18,10 +18,14 @@ export default function Home() {
                 src={profilePic}
                 alt='CodeBucks'
                 className='w-full h-auto'
+                priority={false}
               ></Image>
             </div>
-            <div className='w-1/2'>
-              <AnimatedText text='Turning Vision Into Reality With Code And Design.'></AnimatedText>
+            <div className='w-1/2 flex flex-col items-center self-center'>
+              <AnimatedText
+                className='!text-6xl !text-left'
+                text='Turning Vision Into Reality With Code And Design.'
+              ></AnimatedText>
               <p>
                 As a skilled full-stack developer, I am dedicated to turning
                 ideas into innovative web applications. Explore my latest
