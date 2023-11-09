@@ -2,7 +2,7 @@ import AnimatedText from '@/components/AnimatedText';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 import React from 'react';
-import profilePic from '../../public/profilePic.png';
+import profilePic from '../../public/dalleDeveloperblonde.png';
 import Image from 'next/image';
 
 const about = () => {
@@ -12,13 +12,13 @@ const about = () => {
         <title>About Page</title>
         <meta name='description' content='any description'></meta>
       </Head>
-      <main className='flex w-full flex-col items-center justify-center'>
+      <main className='flex w-full flex-col items-center justify-center '>
         <Layout className='pt-16'>
           <AnimatedText
             className='mb-16'
             text='Passion Fuels Purpose!'
           ></AnimatedText>
-          <div className='grid w-full grid-cols-8 gap-16'>
+          <div className='grid w-full grid-cols-8 gap-16 '>
             <div className='col-span-3 flex flex-col items-start justify-start'>
               <h2 className='mb-4 text-lg font-bold uppercase text-dark/75'>
                 Biography
@@ -52,11 +52,12 @@ const about = () => {
                 />
               </div>
             </div> */}
-            <div className=' col-span-3 p-8 relative bg-transparent rounded-xl overflow-hidden border-4 border-dark bg-light shadow-2xl'>
+            <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8'>
+              <div className='absolute top-0 -right-4 -z-10 w-[102%] h-[103%] rounded-2xl bg-dark' />
               <Image
-                src={profilePic} // Replace with your image path
-                alt='Descriptive Alt Text'
-                className='w-full h-auto' // Apply the same border-radius as the div
+                src={profilePic}
+                alt='Codebucks'
+                className='w-full h-auto rounded-2xl'
               />
             </div>
           </div>
