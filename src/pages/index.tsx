@@ -6,6 +6,8 @@ import AnimatedText from '@/components/AnimatedText';
 import Link from 'next/link';
 import { LinkArrow } from '../../public/LinkedArrow';
 import { Footer } from '@/components/Footer';
+import { HireMe } from '@/components/HireMe';
+import lightBulb from '../../public/lightbulb.svg';
 
 export default function Home() {
   return (
@@ -56,6 +58,10 @@ export default function Home() {
           </div>
           {/* <Footer></Footer> */}
         </Layout>
+        {/* <HireMe></HireMe> */}
+        <div className='absolute right-8 bottom-8 inline-block w-24'>
+          <Image src={lightBulb} alt='marek' className='w-full h-auto'></Image>
+        </div>
       </main>
     </>
   );
