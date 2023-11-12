@@ -6,6 +6,8 @@ import profilePic from '../../public/dalleDeveloperblonde.png';
 import Image from 'next/image';
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import { Skills } from '@/components/Skills';
+import { Experience } from '@/components/Experience';
+import { Education } from '@/components/Education';
 
 interface AnimatedNumbersProps {
   value: number;
@@ -114,6 +116,8 @@ const about = () => {
             </div>
           </div>
           <Skills></Skills>
+          <Experience></Experience>
+          <Education></Education>
         </Layout>
       </main>
     </>
