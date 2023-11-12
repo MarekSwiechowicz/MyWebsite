@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import AnimatedText from '@/components/AnimatedText';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
@@ -56,6 +57,7 @@ const about = () => {
               <h2 className='mb-4 text-lg font-bold uppercase text-dark/75'>
                 Biography
               </h2>
+
               <p className=' font-medium'>
                 Hi, I'm Marek, a web developer with a year of professional
                 experience in creating functional and user-friendly digital
