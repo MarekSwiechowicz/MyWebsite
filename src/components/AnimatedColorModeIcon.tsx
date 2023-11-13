@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 
-const AnimatedIcon = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
+const AnimatedColorModeIcon = ({ mode, setMode }) => {
+  const isDarkMode = mode === 'dark';
 
   const properties = {
     dark: {
@@ -49,7 +49,10 @@ const AnimatedIcon = () => {
       strokeLinecap='round'
       strokeLinejoin='round'
       style={{ cursor: 'pointer', ...svgContainerProps }}
-      onClick={() => setDarkMode((prev) => !prev)}
+      onClick={() => setMode(isDarkMode ? 'light' : 'dark')}
+      className={`ml-3 flex items-center justify-center rounded-full p-0.5 ${
+        mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
+      }`}
     >
       <mask id='mask'>
         <rect x='0' y='0' width='100%' height='100%' fill='white' />
@@ -84,4 +87,4 @@ const AnimatedIcon = () => {
   );
 };
 
-export default AnimatedIcon;
+export default AnimatedColorModeIcon;

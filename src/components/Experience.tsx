@@ -36,13 +36,13 @@ const Details: React.FC<DetailsProps> = ({
             {position}&nbsp;{' '}
             <a
               href={companyLink}
-              className=' text-primary capitalize'
+              className=' text-primary dark:text-primaryDark capitalize'
               target='_blank'
             >
               @{company}
             </a>
           </h3>
-          <span className='capitalize font-medium text-dark/75 '>
+          <span className='capitalize font-medium text-dark/75 dark:text-light/75 '>
             {time} | {adress}
           </span>
           <p className='font-medium w-full'>{work}</p>
@@ -66,7 +66,8 @@ export const Experience = () => {
       <div ref={ref} className='w-[75%] mx-auto relative'>
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className='absolute left-9 top-0 w-[4px] h-full bg-dark origin-top'
+          className='absolute left-9 top-0 w-[4px] h-full
+           bg-dark origin-top dark:bg-light'
         ></motion.div>
         <ul>
           <Details
@@ -74,7 +75,10 @@ export const Experience = () => {
             company='Geeknauts'
             time='2022-Present'
             companyLink=''
-            work='Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer'
+            work='Wokred as a web developer Wokred as a
+             web developer Wokred as a web developer
+              Wokred as a web developer Wokred as
+               a web developer Wokred as a web developer'
             adress='Geeknauts'
           ></Details>
           <Details

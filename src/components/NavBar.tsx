@@ -6,7 +6,7 @@ import GithubIcon from '../../public/GithubIcon';
 import LinkedinIcon from '../../public/LinkedinIcon';
 import { motion } from 'framer-motion';
 import { useThemeSwitcher } from './hooks/useThemeSwitcher';
-import AnimatedIcon from './AnimatedIcon';
+import AnimatedColorModeIcon from './AnimatedColorModeIcon';
 
 type CustomLinkProps = {
   href: string;
@@ -67,19 +67,10 @@ const NavBar = () => {
           <LinkedinIcon></LinkedinIcon>
         </motion.a>
 
-        <button
-          className={`ml-3 flex items-center justify-center rounded-full p-1 ${
-            mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
-          }`}
-          onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-        >
-          {mode === 'dark' ? (
-            <span className={'fill-dark'}>1</span>
-          ) : (
-            <span className={'fill-dark'}>2</span>
-          )}
-        </button>
-        <AnimatedIcon></AnimatedIcon>
+        <AnimatedColorModeIcon
+          mode={mode}
+          setMode={setMode}
+        ></AnimatedColorModeIcon>
       </nav>
       <div className='absolute left-[50%] top-2 translate-x-[-50%]'>
         <Logo></Logo>
