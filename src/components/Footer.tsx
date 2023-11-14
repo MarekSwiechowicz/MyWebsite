@@ -6,11 +6,11 @@ export const Footer = () => {
   return (
     <footer
       className=' w-full border-t-2 border-solid border-dark font-medium text-lg
-    dark:text-light dark:border-light'
+    dark:text-light dark:border-light sm:text-base'
     >
-      <Layout className=' flex py-8  items-center justify-between'>
+      <Layout className=' flex py-8  items-center justify-between lg:flex-col lg:py-6'>
         <span>{new Date().getFullYear()} &copy; All Rights Reserved. </span>
-        <div className=' flex items-center'>
+        <div className=' flex items-center lg:py-2'>
           Build With{' '}
           <span className='text-primary dark:text-primaryDark text-2xl px-1'>
             {' '}
@@ -19,7 +19,13 @@ export const Footer = () => {
           by &nbsp;
           <span className='underline'>Marek</span>
         </div>
-        <Link href='/'>Say hello</Link>
+        <Link
+          href='/'
+          target={'_blank'}
+          className=' underline underline-offset-2'
+        >
+          Say hello
+        </Link>
       </Layout>
     </footer>
   );

@@ -5,14 +5,14 @@ const AnimatedColorModeIcon = ({ mode, setMode }) => {
   const isDarkMode = mode === 'dark';
 
   const properties = {
-    dark: {
+    light: {
       r: 9,
       transform: 'rotate(40deg)',
       cx: 12,
       cy: 4,
       opacity: 0,
     },
-    light: {
+    dark: {
       r: 5,
       transform: 'rotate(90deg)',
       cx: 30,
@@ -51,8 +51,8 @@ const AnimatedColorModeIcon = ({ mode, setMode }) => {
       style={{ cursor: 'pointer', ...svgContainerProps }}
       onClick={() => setMode(isDarkMode ? 'light' : 'dark')}
       className={`ml-3 flex items-center justify-center rounded-full p-0.5 ${
-        mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
-      }`}
+        mode === 'dark' ? 'bg-light text-dark' : 'bg-dark text-light'
+      } `}
     >
       <mask id='mask'>
         <rect x='0' y='0' width='100%' height='100%' fill='white' />
@@ -60,14 +60,14 @@ const AnimatedColorModeIcon = ({ mode, setMode }) => {
           style={maskedCircleProps}
           cx='12'
           cy='4'
-          r='9'
+          r='11'
           fill='black'
         />
       </mask>
 
       <animated.circle
         style={centerCircleProps}
-        fill='black'
+        fill={isDarkMode ? 'black' : 'white'}
         cx='12'
         cy='12'
         r='9'
