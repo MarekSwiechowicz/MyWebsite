@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { twMerge } from 'tailwind-merge';
 
 const quote = {
   initial: {
@@ -38,9 +39,10 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
   className = '',
 }) => {
   return (
-    <div className='w-full mx-auto py-2 flex items-center justify-center text-center overflow-hidden sm:py-0'>
+    <div className='w-full mx-auto py-0 sm:py-2 flex items-center justify-center text-center overflow-hidden '>
       <motion.h1
-        className={`inline-block w-full text-dark font-bold capitalize text-8xl dark:text-light ${className}`}
+        className={twMerge(`inline-block w-full text-dark font-bold
+         capitalize text-8xl dark:text-light ${className} `)}
         variants={quote}
         initial='initial'
         animate='animate'

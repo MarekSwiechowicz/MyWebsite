@@ -13,31 +13,29 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
       </Head>
-      <main className='flex items-center text-dark w-full min-h-screen dark:text-light '>
-        <Layout className='pt-0 md:p-16 sm:pt-8'>
-          <div className='flex items-center justify-between w-full lg:flex-col'>
-            <div className='w-1/2 md:w-full '>
+      <main className='flex min-h-screen items-center text-dark w-full  dark:text-light'>
+        <Layout className='pt-16 md:!pt-0 sm:pt-8'>
+          <div className='flex flex-col lg:flex-row items-center justify-between w-full '>
+            <div className='w-full lg:w-1/2'>
               <Image
                 src={profilePic}
                 alt='Marek'
-                className='w-full h-auto hide-between-md-lg'
+                className='w-full h-auto inline-block md:hidden lg:flex'
                 priority
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw,
-                50vw'
               ></Image>
             </div>
-            <div className='w-1/2 flex flex-col items-center self-center lg:w-full lg:text-center'>
+            <div className=' lg:w-1/2 flex flex-col items-center self-center text-center'>
               <AnimatedText
-                className='!text-6xl !text-left xl:!text-5xl lg:!text-center lg:!text=6xl md:!text-5xl sm:!text-3xl'
+                className='text-3xl lg:text-left sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl'
                 text='Turning Vision Into Reality With Code And Design.'
               ></AnimatedText>
-              <p className='my-4 text-base font-medium md:text-small sm:text-xs'>
+              <p className='my-4 text-xs md:text-base font-medium text-center lg:text-left'>
                 As a skilled full-stack developer, I am dedicated to turning
                 ideas into innovative web applications. Explore my latest
                 projects and articles, showcasing my expertise in React.js and
                 web development.
               </p>
-              <div className='flex items-center self-start mt-2 lg:self-center'>
+              <div className='flex items-center mt-2 lg:self-start self-center'>
                 <Link
                   className='flex items-center bg-dark text-light p-2.5 px-6
                    rounded-lg text-lg font-semibold hover:bg-light
@@ -65,7 +63,7 @@ export default function Home() {
           {/* <Footer></Footer> */}
         </Layout>
         {/* <HireMe></HireMe> */}
-        <div className='absolute right-8 bottom-8 inline-block w-24 md:hidden'>
+        <div className='absolute  right-8 bottom-8 w-24 hidden md:inline-block'>
           <Image src={lightBulb} alt='marek' className='w-full h-auto'></Image>
         </div>
       </main>
