@@ -10,23 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        '2xl': { max: '1535px' },
-        // => @media (max-width: 1535px) { ... }
+        xs: '480px', // Min width 480px
+        // => @media (min-width: 480px) { ... }
 
-        xl: { max: '1279px' },
-        // => @media (max-width: 1279px) { ... }
+        sm: '640px', // Min width 640px
+        // => @media (min-width: 640px) { ... }
 
-        lg: { max: '1023px' },
-        // => @media (max-width: 1023px) { ... }
+        md: '768px', // Min width 768px
+        // => @media (min-width: 768px) { ... }
 
-        md: { max: '767px' },
-        // => @media (max-width: 767px) { ... }
+        lg: '1024px', // Min width 1024px
+        // => @media (min-width: 1024px) { ... }
 
-        sm: { max: '639px' },
-        // => @media (max-width: 639px) { ... }
-
-        xs: { max: '479px' },
-        // => @media (max-width: 479px) { ... }
+        xl: '1280px', // Min width 1280px
+        // => @media (min-width: 1280px) { ... }
       },
       colors: {
         dark: '#1b1b1b',

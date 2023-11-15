@@ -7,6 +7,7 @@ import LinkedinIcon from '../../public/LinkedinIcon';
 import { motion } from 'framer-motion';
 import { useThemeSwitcher } from './hooks/useThemeSwitcher';
 import AnimatedColorModeIcon from './AnimatedColorModeIcon';
+import { twMerge } from 'tailwind-merge';
 
 type CustomLinkProps = {
   href: string;
@@ -79,11 +80,12 @@ const NavBar = () => {
   };
   return (
     <header
-      className='w-full px-32 py-8 font-medium flex items-center
-       justify-between dark:text-light relative z-10 lg:px-16 md:px-12 sm:px-8'
+      className={twMerge(
+        'w-full px-8 md:px-12 lg:px-16 xl:px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 '
+      )}
     >
       <button
-        className=' flex-col justify-center items-center hidden lg:flex'
+        className=' flex lg:hidden flex-col justify-center items-center'
         onClick={handleClick}
       >
         <span
@@ -102,7 +104,7 @@ const NavBar = () => {
         ></span>
       </button>
       {/* desktop bar */}
-      <div className='w-full flex justify-between items-center lg:hidden'>
+      <div className='w-full hidden justify-between items-center lg:flex'>
         <nav>
           <CustomLink href='/' title='Home' className='mr-4'></CustomLink>
           <CustomLink href='/about' title='About' className='mx-4'></CustomLink>
