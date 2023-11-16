@@ -60,7 +60,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <Footer></Footer> */}
         </Layout>
         {/* <HireMe></HireMe> */}
         <div className='absolute  right-8 bottom-8 w-24 hidden md:inline-block'>

@@ -5,14 +5,14 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer
-      className=' w-full border-t-2 border-solid border-dark font-medium text-lg
-    dark:text-light dark:border-light sm:text-base'
+      className=' w-full border-t-2 border-solid border-dark font-medium 
+    dark:text-light dark:border-light text-base md:text-lg '
     >
-      <Layout className=' flex py-8  items-center justify-between lg:flex-col lg:py-6'>
+      <Layout className=' flex flex-col lg:flex-row py-8 md:!py-6 items-center justify-between'>
         <span>{new Date().getFullYear()} &copy; All Rights Reserved. </span>
-        <div className=' flex items-center lg:py-2'>
+        <div className=' flex items-center py-2 '>
           Build With{' '}
-          <span className='text-primary dark:text-primaryDark text-2xl px-1'>
+          <span className='text-primary dark:text-primaryDark text-2xl  px-2'>
             {' '}
             &#9825;{' '}
           </span>
