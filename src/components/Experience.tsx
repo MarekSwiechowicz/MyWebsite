@@ -60,7 +60,7 @@ export const Experience = () => {
   });
   return (
     <div className='my-64'>
-      <h2 className=' font-bold text-8xl text-center w-full mb-32'>
+      <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-32'>
         Experience
       </h2>
       <div ref={ref} className='w-[75%] mx-auto relative'>

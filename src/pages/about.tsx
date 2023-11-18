@@ -47,13 +47,14 @@ const about = () => {
         <meta name='description' content='any description'></meta>
       </Head>
       <main className='flex w-full flex-col items-center justify-center dark:text-light'>
-        <Layout className='pt-16'>
+        <Layout className=''>
           <AnimatedText
-            className='mb-16'
+            className='mb-8 sm:mb-16 text-4xl sm:text-6xl lg:text-7xl'
             text='Passion Fuels Purpose!'
           ></AnimatedText>
-          <div className='grid w-full grid-cols-8 gap-16 '>
-            <div className='col-span-3 flex flex-col items-start justify-start'>
+
+          <div className='flex flex-col sm:grid sm:grid-cols-2 sm:gap-4'>
+            <div className='order-2 sm:order-none'>
               <h2 className='mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
                 Biography
               </h2>
@@ -78,18 +79,17 @@ const about = () => {
                 fresh perspective to your next project.
               </p>
             </div>
-            <div className='col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light'>
+            <div className='order-1 sm:order-none p-8 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light'>
               <div className='absolute top-1 -right-4 -z-10 w-[102%] h-[103%] rounded-2xl bg-dark dark:bg-light' />
               <Image
                 src={profilePic}
                 alt='Codebucks'
                 className='w-full h-auto rounded-2xl'
                 priority
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw,
-                33vw'
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               />
             </div>
-            <div className='col-span-2 flex flex-col items-end justify-between'>
+            <div className='order-3'>
               <div className='flex flex-col items-end justify-center'>
                 <span className=' inline-block text-7xl font-bold'>
                   <AnimatedNumbers value={50}></AnimatedNumbers>+
@@ -120,6 +120,7 @@ const about = () => {
               </div>
             </div>
           </div>
+
           <Skills></Skills>
           <Experience></Experience>
           <Education></Education>
