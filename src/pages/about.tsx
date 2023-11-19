@@ -80,7 +80,7 @@ const about = () => {
               </p>
             </div>
             <div className='order-1 sm:order-none p-8 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light'>
-              <div className='absolute top-1 -right-4 -z-10 w-[102%] h-[103%] rounded-2xl bg-dark dark:bg-light' />
+              <div className='absolute top-1 -right-3 -z-10 w-[102%] h-[103%] rounded-3xl  bg-dark dark:bg-light' />
               <Image
                 src={profilePic}
                 alt='Codebucks'
