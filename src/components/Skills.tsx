@@ -12,8 +12,9 @@ const Skill: React.FC<SkillProps> = ({ name, x, y }) => {
     <motion.div
       whileHover={{ scale: 1.1 }}
       className='absolute cursor-pointer flex items-center
-       rounded-full font-semibold bg-dark text-light py-3 px-6
-        shadow-dark dark:text-dark dark:bg-light'
+       rounded-full font-semibold bg-transparent sm:bg-dark text-dark sm:text-light py-3 px-6
+        shadow-dark dark:text-dark dark:bg-light
+        '
       initial={{ x: 0, y: 0 }}
       whileInView={{ x: x, y: y, transition: { duration: 1.5 } }}
       viewport={{ once: true }}
@@ -26,15 +27,17 @@ const Skill: React.FC<SkillProps> = ({ name, x, y }) => {
 export const Skills = () => {
   return (
     <>
-      <h2 className='font-bold text-8xl mt-64 w-full text-center'>Skills</h2>
+      <h2 className='font-bold text-6xl sm:text-8xl mt-32 sm:mt-64 w-full text-center'>
+        Skills
+      </h2>
       <div
-        className='w-full h-screen relative flex items-center
-       justify-center rounded-full bg-circularLight dark:bg-circularDark'
+        className='w-full h-[50vh] sm:h-[80vh] lg:h-[100vh] mb-32 relative flex items-center
+       justify-center rounded-full bg-circularLightSm sm:bg-circularLightLg lg:bg-circularLightXl dark:bg-circularDarkSm sm:dark:bg-circularDarkLg lg:dark:bg-circularDarkXl '
       >
         <motion.div
           whileHover={{ scale: 1.1 }}
           className='cursor-pointer flex items-center rounded-full
-           font-semibold bg-dark text-light p-8
+           font-semibold  bg-dark text-light p-2  md:p-6 lg:p-8
             shadow-dark dark:text-dark dark:bg-light'
         >
           Web
