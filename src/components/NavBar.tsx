@@ -81,7 +81,7 @@ const NavBar = () => {
   return (
     <header
       className={twMerge(
-        'w-full px-8 md:px-12 lg:px-16 xl:px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 '
+        'w-full px-8 md:px-16 lg:px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 '
       )}
     >
       <button
