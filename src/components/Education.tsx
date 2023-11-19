@@ -24,7 +24,7 @@ const Details: React.FC<DetailsProps> = ({ type, time, place, info }) => {
       >
         <div>
           <h3 className='capitalize font-bold text-lg sm:text-2xl'>{type}</h3>
-          <span className='capitalize font-medium text-dark/75 dark:text-light/75 '>
+          <span className='font-medium text-dark/75 dark:text-light/75 text-sm sm:text-base '>
             {time} | {place}
           </span>
           <p className='font-medium w-full text-sm sm:text-base'>{info}</p>
@@ -54,7 +54,7 @@ export const Education = () => {
           className='absolute left-[20px] md:left-[40px] top-0 w-[2px] sm:w-[4px] h-full
            bg-dark origin-top dark:bg-light'
         ></motion.div>
-        <ul>
+        <ul className='w-full flex flex-col items-start justify-between ml-2 sm:ml-4'>
           <Details
             type='Batchelor Of Science In Computer Science'
             time='2017-2021'
