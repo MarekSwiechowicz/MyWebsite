@@ -70,43 +70,40 @@ export const Experience = () => {
         <motion.div
           style={{ scaleY: scrollYProgress }}
           className='absolute left-[20px] md:left-[40px] top-0 w-[2px] sm:w-[4px] h-full
-           bg-dark origin-top dark:bg-light '
+           bg-dark origin-top  dark:bg-primaryDark dark:shadow-primaryDark dark:shadow-3xl  '
         ></motion.div>
         <ul className='w-full flex flex-col items-start justify-between ml-2 sm:ml-4'>
           <Details
-            position='Software Engineer'
+            position='Web Developer'
             company='Geeknauts'
-            time='2022-Present'
-            companyLink=''
-            work='Wokred as a web developer Wokred as a
-             web developer Wokred as a web developer
-              Wokred as a web developer Wokred as
-               a web developer Wokred as a web developer'
+            time='2022-2023'
+            companyLink='https://geeknauts.com/pl/'
+            work='I worked on web and mobile application development both in a team and independently; as part of a team, I collaborated on complex projects for various clients, and in solo roles, I managed the full spectrum of development tasks from concept to completion.'
             adress='Geeknauts'
           ></Details>
           <Details
             position='Frontend Engineer'
             company='RabeSoft'
-            time='2022-Present'
+            time='2022'
             companyLink=''
-            work='Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer'
-            adress='Geeknauts'
+            work='I took on the role of a frontend engineer for the mobile DinnerDate app, focusing on enhancing user interface and experience. My work involved implementing interactive design elements and ensuring seamless functionality across various devices.'
+            adress='RabeSoft'
           ></Details>
           <Details
             position='Frontend Engineer'
             company='VisualSoft'
-            time='2022-Present'
-            companyLink=''
-            work='Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer'
-            adress='Geeknauts'
+            time='2022-2023'
+            companyLink='https://visualsoft.com.pl/'
+            work='I was the sole frontend developer for the Smartkid app, leveraging React Native for cross-platform functionality and Fastlane for streamlined deployment. My work involved building a rich user interface and integrating key features using modern tools like Firebase and Redux for robust app performance.'
+            adress='VisualSoft'
           ></Details>
           <Details
             position='Full-Stack Engineer'
             company='Eternis'
-            time='2022-Present'
-            companyLink=''
-            work='Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer Wokred as a web developer '
-            adress='Geeknauts'
+            time='2022'
+            companyLink='https://eternis.pl/'
+            work='During the development of the Eternis website, I employed Next.js and Strapi for efficient performance and content management. My contribution also involved implementing Chakra UI to achieve a responsive and user-friendly interface.'
+            adress='Eternis'
           ></Details>
         </ul>
       </div>

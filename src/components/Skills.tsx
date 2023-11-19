@@ -12,9 +12,8 @@ const Skill: React.FC<SkillProps> = ({ name, x, y }) => {
     <motion.div
       whileHover={{ scale: 1.1 }}
       className='absolute cursor-pointer flex items-center
-       rounded-full font-semibold bg-transparent sm:bg-dark text-dark sm:text-light py-3 px-6
-        shadow-dark dark:text-dark dark:bg-light
-        '
+       rounded-full font-semibold bg-transparent sm:bg-dark text-dark sm:text-light  py-2 lg:py-3 px-4 lg:px-6
+        shadow-dark dark:text-light dark:sm:text-dark dark:bg-transparent sm:dark:bg-light'
       initial={{ x: 0, y: 0 }}
       whileInView={{ x: x, y: y, transition: { duration: 1.5 } }}
       viewport={{ once: true }}

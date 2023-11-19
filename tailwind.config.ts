@@ -34,6 +34,10 @@ const config: Config = {
       animation: {
         'spin-slow': 'spin 8s linear infinite',
       },
+      boxShadow: {
+        '3xl': '0 15px 15px 1px rgba(80,230,217, 0.4)',
+      },
+
       backgroundImage: {
         circularLightXl:
           'repeating-radial-gradient(rgba(0,0,0,0.4) 2px,#f5f5f5 5px,#f5f5f5 100px)',
