@@ -49,12 +49,12 @@ const about = () => {
       <main className='flex w-full flex-col items-center justify-center dark:text-light'>
         <Layout className=''>
           <AnimatedText
-            className='mb-8 sm:mb-16 text-4xl sm:text-6xl lg:text-7xl'
+            className='mb-8 sm:mb-16 text-4xl sm:text-7xl lg:text-8xl'
             text='Passion Fuels Purpose!'
           ></AnimatedText>
 
-          <div className='flex flex-col sm:grid sm:grid-cols-2 sm:gap-4'>
-            <div className='order-2 sm:order-none'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-16'>
+            <div className='order-2 sm:order-none '>
               <h2 className='mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
                 Biography
               </h2>
@@ -89,7 +89,7 @@ const about = () => {
                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               />
             </div>
-            <div className='order-3'>
+            <div className='order-3 sm:col-span-2 xl:col-span-1 xl:flex xl:flex-col grid grid-cols-3 justify-between'>
               <div className='flex flex-col items-end justify-center'>
                 <span className=' inline-block text-7xl font-bold'>
                   <AnimatedNumbers value={50}></AnimatedNumbers>+
@@ -99,7 +99,7 @@ const about = () => {
                 </h2>
               </div>
               <div>
-                <div className=' col-span-2 flex flex-col items-end justify-center'>
+                <div className=' flex flex-col items-end justify-center'>
                   <span className=' inline-block text-7xl font-bold'>
                     <AnimatedNumbers value={50}></AnimatedNumbers>+
                   </span>
@@ -109,7 +109,7 @@ const about = () => {
                 </div>
               </div>
               <div>
-                <div className=' col-span-2 flex flex-col items-end justify-center'>
+                <div className=' flex flex-col items-end justify-center'>
                   <span className=' inline-block text-7xl font-bold'>
                     <AnimatedNumbers value={1}></AnimatedNumbers>+
                   </span>
