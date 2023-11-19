@@ -53,9 +53,9 @@ const about = () => {
             text='Passion Fuels Purpose!'
           ></AnimatedText>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-16'>
-            <div className='order-2 sm:order-none '>
-              <h2 className='mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-8 sm:gap-16'>
+            <div className='order-2 xl:col-span-3 sm:order-none '>
+              <h2 className='mb-4 mt-5 sm:mt-0 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
                 Biography
               </h2>
 
@@ -79,7 +79,7 @@ const about = () => {
                 fresh perspective to your next project.
               </p>
             </div>
-            <div className='order-1 sm:order-none p-8 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light'>
+            <div className='order-1 xl:col-span-3 sm:order-none p-8 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light'>
               <div className='absolute top-1 -right-3 -z-10 w-[102%] h-[103%] rounded-3xl  bg-dark dark:bg-light' />
               <Image
                 src={profilePic}
@@ -89,31 +89,31 @@ const about = () => {
                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               />
             </div>
-            <div className='order-3 sm:col-span-2 xl:col-span-1 xl:flex xl:flex-col grid grid-cols-3 justify-between'>
-              <div className='flex flex-col items-end justify-center'>
-                <span className=' inline-block text-7xl font-bold'>
+            <div className='order-3 sm:col-span-2 xl:col-span-2 xl:flex xl:flex-col grid grid-cols-3 justify-between'>
+              <div className='flex flex-col xl:items-end justify-center items-center'>
+                <span className=' inline-block text-4xl md:text-7xl font-bold'>
                   <AnimatedNumbers value={50}></AnimatedNumbers>+
                 </span>
-                <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
+                <h2 className=' text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
                   satisfied clients
                 </h2>
               </div>
               <div>
-                <div className=' flex flex-col items-end justify-center'>
-                  <span className=' inline-block text-7xl font-bold'>
+                <div className=' flex flex-col xl:items-end justify-center items-center'>
+                  <span className=' inline-block text-4xl md:text-7xl font-bold'>
                     <AnimatedNumbers value={50}></AnimatedNumbers>+
                   </span>
-                  <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
+                  <h2 className='text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
                     projects completed
                   </h2>
                 </div>
               </div>
               <div>
-                <div className=' flex flex-col items-end justify-center'>
-                  <span className=' inline-block text-7xl font-bold'>
+                <div className=' flex flex-col xl:items-end justify-center items-center'>
+                  <span className=' inline-block text-4xl md:text-7xl font-bold'>
                     <AnimatedNumbers value={1}></AnimatedNumbers>+
                   </span>
-                  <h2 className='text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
+                  <h2 className='text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
                     years of experience
                   </h2>
                 </div>
