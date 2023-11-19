@@ -60,10 +60,10 @@ const about = () => {
               </h2>
 
               <p className=' font-medium'>
-                Hi, I'm Marek, a web developer with a year of professional
-                experience in creating functional and user-friendly digital
-                experiences. I take pride in delivering designs that are not
-                just aesthetically pleasing but also solve real problems and
+                Hi, I'm <strong>Marek</strong>, a web developer with a year of
+                professional experience in creating functional and user-friendly
+                digital experiences. I take pride in delivering designs that are
+                not just aesthetically pleasing but also solve real problems and
                 provide seamless user experiences.
               </p>
               <p className=' my-4 font-medium'>
@@ -92,7 +92,7 @@ const about = () => {
             <div className='order-3 sm:col-span-2 xl:col-span-2 xl:flex xl:flex-col grid grid-cols-3 justify-between'>
               <div className='flex flex-col xl:items-end justify-center items-center'>
                 <span className=' inline-block text-4xl md:text-7xl font-bold'>
-                  <AnimatedNumbers value={50}></AnimatedNumbers>+
+                  <AnimatedNumbers value={10}></AnimatedNumbers>+
                 </span>
                 <h2 className=' text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
                   satisfied clients
@@ -101,7 +101,7 @@ const about = () => {
               <div>
                 <div className=' flex flex-col xl:items-end justify-center items-center'>
                   <span className=' inline-block text-4xl md:text-7xl font-bold'>
-                    <AnimatedNumbers value={50}></AnimatedNumbers>+
+                    <AnimatedNumbers value={10}></AnimatedNumbers>+
                   </span>
                   <h2 className='text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
                     projects completed

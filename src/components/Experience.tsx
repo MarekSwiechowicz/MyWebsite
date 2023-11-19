@@ -23,7 +23,7 @@ const Details: React.FC<DetailsProps> = ({
   return (
     <li
       ref={ref}
-      className='my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between'
+      className='my-8 first:mt-0 last:mb-0 w-[80%] sm:w-[60%] mx-auto flex flex-col items-center justify-between'
     >
       <LiIcon reference={ref}></LiIcon>
       <motion.div
@@ -32,7 +32,7 @@ const Details: React.FC<DetailsProps> = ({
         transition={{ duration: 0.5, type: 'spring' }}
       >
         <div>
-          <h3 className='capitalize font-bold text-2xl'>
+          <h3 className='capitalize font-bold text-lg sm:text-2xl'>
             {position}&nbsp;{' '}
             <a
               href={companyLink}
@@ -42,10 +42,10 @@ const Details: React.FC<DetailsProps> = ({
               @{company}
             </a>
           </h3>
-          <span className='capitalize font-medium text-dark/75 dark:text-light/75 '>
+          <span className='font-medium text-dark/75 dark:text-light/75 text-sm sm:text-base '>
             {time} | {adress}
           </span>
-          <p className='font-medium w-full'>{work}</p>
+          <p className='font-medium w-full text-sm sm:text-base'>{work}</p>
         </div>
       </motion.div>
     </li>
@@ -60,16 +60,19 @@ export const Experience = () => {
   });
   return (
     <div className='my-64'>
-      <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-32'>
+      <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-16 sm:mb-32'>
         Experience
       </h2>
-      <div ref={ref} className='w-[75%] mx-auto relative'>
+      <div
+        ref={ref}
+        className=' w-[100%] sm:w-[90%] lg:w-[75%] mx-auto relative'
+      >
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className='absolute left-9 top-0 w-[4px] h-full
-           bg-dark origin-top dark:bg-light'
+          className='absolute left-[20px] md:left-[40px] top-0 w-[2px] sm:w-[4px] h-full
+           bg-dark origin-top dark:bg-light '
         ></motion.div>
-        <ul>
+        <ul className='w-full flex flex-col items-start justify-between ml-2 sm:ml-4'>
           <Details
             position='Software Engineer'
             company='Geeknauts'

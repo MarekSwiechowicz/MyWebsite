@@ -14,7 +14,7 @@ const Details: React.FC<DetailsProps> = ({ type, time, place, info }) => {
   return (
     <li
       ref={ref}
-      className='my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between'
+      className='my-8 first:mt-0 last:mb-0 w-[80%] sm:w-[60%] mx-auto flex flex-col items-center justify-between'
     >
       <LiIcon reference={ref}></LiIcon>
       <motion.div
@@ -23,11 +23,11 @@ const Details: React.FC<DetailsProps> = ({ type, time, place, info }) => {
         transition={{ duration: 0.5, type: 'spring' }}
       >
         <div>
-          <h3 className='capitalize font-bold text-2xl'>{type}</h3>
+          <h3 className='capitalize font-bold text-lg sm:text-2xl'>{type}</h3>
           <span className='capitalize font-medium text-dark/75 dark:text-light/75 '>
             {time} | {place}
           </span>
-          <p className='font-medium w-full'>{info}</p>
+          <p className='font-medium w-full text-sm sm:text-base'>{info}</p>
         </div>
       </motion.div>
     </li>
@@ -42,13 +42,17 @@ export const Education = () => {
   });
   return (
     <div className='my-64'>
-      <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-32'>
+      <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-16 sm:mb-32'>
         Education
       </h2>
-      <div ref={ref} className='w-[75%] mx-auto relative'>
+      <div
+        ref={ref}
+        className=' w-[100%] sm:w-[90%] lg:w-[75%] mx-auto relative'
+      >
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className='absolute left-9 top-0 w-[4px] h-full bg-dark dark:bg-light origin-top'
+          className='absolute left-[20px] md:left-[40px] top-0 w-[2px] sm:w-[4px] h-full
+           bg-dark origin-top dark:bg-light'
         ></motion.div>
         <ul>
           <Details

@@ -10,7 +10,7 @@ export const LiIcon = ({ reference }: { reference: any }) => {
   return (
     <figure className='absolute left-0 stroke-dark dark:stroke-light'>
       <svg
-        className=' -rotate-90 '
+        className=' -rotate-90 w-[40px] h-[40px] sm:w-[80px] sm:h-[75px]'
         width='75'
         height='75'
         viewBox='0 0 100 100'
