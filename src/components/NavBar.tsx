@@ -116,7 +116,7 @@ const NavBar = () => {
             whileHover={{ y: -2 }}
             className='w-6 mx-3 bg-light dark:bg-dark rounded-full'
             whileTap={{ scale: 0.9 }}
-            href='https://github.com'
+            href='https://github.com/MarekSwiechowicz'
             target={'blank'}
           >
             <GithubIcon></GithubIcon>
@@ -125,7 +125,7 @@ const NavBar = () => {
             whileHover={{ y: -2 }}
             className='w-6 mx-3'
             whileTap={{ scale: 0.9 }}
-            href='https://twitter.com'
+            href='https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/'
             target={'blank'}
           >
             <LinkedinIcon></LinkedinIcon>
@@ -172,7 +172,7 @@ const NavBar = () => {
               whileHover={{ y: -2 }}
               className='w-6 mx-3 bg-light dark:bg-dark rounded-full sm:mx-1'
               whileTap={{ scale: 0.9 }}
-              href='https://github.com'
+              href='https://github.com/MarekSwiechowicz'
               target={'blank'}
             >
               <GithubIcon></GithubIcon>
@@ -181,7 +181,7 @@ const NavBar = () => {
               whileHover={{ y: -2 }}
               className='w-6 mx-3 sm:mx-1'
               whileTap={{ scale: 0.9 }}
-              href='https://twitter.com'
+              href='https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/'
               target={'blank'}
             >
               <LinkedinIcon></LinkedinIcon>
