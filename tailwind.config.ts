@@ -7,8 +7,12 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
+
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)'],
+      },
       screens: {
         xs: '480px', // Min width 480px
         // => @media (min-width: 480px) { ... }
