@@ -37,5 +37,9 @@
   "batchelorInfo": "Do istotnych kursów należały Struktury Danych i Algorytmy, Inżynieria Systemów Komputerowych oraz Sztuczna Inteligencja",
   "masters": "Magisterium z Informatyki, Specjalizacja w Cyberbezpieczeństwie",
   "mastersAcademy": "Politechnika Krakowska",
-  "mastersInfo": "Studia magisterskie obejmowały praktyczne doświadczenie z narzędziami do oceny bezpieczeństwa i testowania penetracyjnego, takimi jak Nmap, SonarQube, Burp Suite i BeEF, z naciskiem na praktyczne podejścia do analizy podatności i bezpieczeństwa sieci."
+  "mastersInfo": "Studia magisterskie obejmowały praktyczne doświadczenie z narzędziami do oceny bezpieczeństwa i testowania penetracyjnego, takimi jak Nmap, SonarQube, Burp Suite i BeEF, z naciskiem na praktyczne podejścia do analizy podatności i bezpieczeństwa sieci.",
+  "allRightsReserved": "Wszystkie prawa zastrzeżone.",
+  "buildWithLove": "Stworzone z",
+  "by": "przez",
+  "sayHello": "Przywitaj się"
 }
