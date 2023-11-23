@@ -9,6 +9,7 @@ import lightBulb from '../../public/lightbulb.svg';
 import { TransitionEffect } from '@/components/TransitionEffect';
 import { useTranslation } from 'next-i18next'; // Import useTranslation
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from 'next';
 
 export default function Home() {
   const { t } = useTranslation('common'); // Initialize useTranslation
@@ -79,10 +80,12 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale || 'en'; // Fallback to 'en' if locale is undefined
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
     },
   };
-}
+};
