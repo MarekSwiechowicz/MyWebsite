@@ -10,6 +10,9 @@ import { Skills } from '@/components/Skills';
 import { Experience } from '@/components/Experience';
 import { Education } from '@/components/Education';
 import { TransitionEffect } from '@/components/TransitionEffect';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 interface AnimatedNumbersProps {
   value: number;
@@ -40,11 +43,13 @@ const AnimatedNumbers: React.FC<AnimatedNumbersProps> = ({ value }) => {
   return <span ref={ref}></span>;
 };
 
-const about = () => {
+const About = () => {
+  const { t } = useTranslation('common'); // Initialize useTranslation
+
   return (
     <>
       <Head>
-        <title>About Page</title>
+        <title>{t('page_title', 'About Page')}</title>
         <meta name='description' content='any description'></meta>
       </Head>
       <TransitionEffect />
@@ -52,40 +57,25 @@ const about = () => {
         <Layout className=''>
           <AnimatedText
             className='mb-8 sm:mb-16 text-4xl sm:text-7xl lg:text-8xl w-full items-center '
-            text='Passion Fuels Purpose!'
+            text={t('passion_fuels_purpose')}
           ></AnimatedText>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-8 sm:gap-16'>
             <div className='order-2 xl:col-span-3 sm:order-none '>
               <h2 className='mb-4 mt-5 sm:mt-0 text-lg font-bold uppercase text-dark/75 dark:text-light/75'>
-                Biography
+                {t('biography_heading')}
               </h2>
 
-              <p className=' font-medium'>
-                Hi, I'm <strong>Marek</strong>, a web developer with a year of
-                professional experience in creating functional and user-friendly
-                digital experiences. I take pride in delivering designs that are
-                not just aesthetically pleasing but also solve real problems and
-                provide seamless user experiences.
-              </p>
-              <p className=' my-4 font-medium'>
-                I believe that great design transcends mere looks—it’s about
-                crafting solutions and enjoyable interactions. My focus extends
-                across various digital mediums, from websites to mobile apps,
-                where I apply my dedication to design brilliance and
-                user-centric principles.
-              </p>
-              <p className=' my-4 font-medium'>
-                With every project, I aim to leverage my skills and enthusiasm
-                to realize your vision. I’m eager to contribute my knowledge and
-                fresh perspective to your next project.
-              </p>
+              <p className=' font-medium'>{t('biography_paragraph_1')}</p>
+              <p className=' my-4 font-medium'>{t('biography_paragraph_2')}</p>
+
+              <p className=' my-4 font-medium'>{t('biography_paragraph_3')}</p>
             </div>
             <div className='order-1 xl:col-span-3 sm:order-none p-8 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light'>
               <div className='absolute top-1 -right-3 -z-10 w-[102%] h-[103%] rounded-3xl  bg-dark dark:bg-light' />
               <Image
                 src={profilePic}
-                alt='Codebucks'
+                alt={t('profile_pic_alt')}
                 className='w-full h-auto rounded-2xl'
                 priority
                 sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -97,7 +87,7 @@ const about = () => {
                   <AnimatedNumbers value={10}></AnimatedNumbers>+
                 </span>
                 <h2 className=' text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
-                  satisfied clients
+                  {t('satisfied_clients_heading')}
                 </h2>
               </div>
               <div>
@@ -106,7 +96,7 @@ const about = () => {
                     <AnimatedNumbers value={10}></AnimatedNumbers>+
                   </span>
                   <h2 className='text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
-                    projects completed
+                    {t('projects_completed_heading')}
                   </h2>
                 </div>
               </div>
@@ -116,7 +106,7 @@ const about = () => {
                     <AnimatedNumbers value={1}></AnimatedNumbers>+
                   </span>
                   <h2 className='text-xs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75'>
-                    years of experience
+                    {t('years_of_experience_heading')}
                   </h2>
                 </div>
               </div>
@@ -132,4 +122,14 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale || 'en'; // Fallback to 'en' if locale is undefined
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+};

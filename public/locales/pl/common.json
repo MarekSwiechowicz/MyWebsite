@@ -3,6 +3,20 @@
   "developer_description": "Jako doświadczony programista full-stack, jestem zaangażowany w przekształcanie pomysłów w innowacyjne aplikacje internetowe. Zapoznaj się z moimi najnowszymi projektami i artykułami, prezentującymi moją wiedzę na temat React.js i rozwoju stron internetowych.",
   "resume_button": "CV",
   "contact_link": "Kontakt",
-  "profile_pic_alt": "Marek",
-  "lightbulb_pic_alt": "Żarówka"
+  "profile_pic_alt": "Zdjęcie profilowe Marka",
+  "lightbulb_pic_alt": "Żarówka",
+  "biography_heading": "Biografia",
+  "biography_paragraph_1": "Cześć, jestem Marek, programista webowy z rocznym doświadczeniem w tworzeniu funkcjonalnych i przyjaznych dla użytkownika rozwiązań cyfrowych. Cenię sobie dostarczanie projektów, które nie tylko cieszą oko, ale również rozwiązują rzeczywiste problemy i zapewniają płynne doświadczenia użytkownika.",
+  "biography_paragraph_2": "Wierzę, że świetny design to coś więcej niż wygląd - chodzi o tworzenie rozwiązań i przyjemnych interakcji. Moje zainteresowania rozciągają się na różne środki cyfrowe, od stron internetowych po aplikacje mobilne, gdzie stosuję moje zaangażowanie w doskonałość projektowania i zasady skoncentrowane na użytkowniku.",
+  "biography_paragraph_3": "W każdym projekcie dążę do wykorzystania moich umiejętności i entuzjazmu do realizacji Twojej wizji. Z niecierpliwością pragnę wnosić moją wiedzę i świeże spojrzenie do Twojego następnego projektu.",
+  "satisfied_clients_heading": "Zadowoleni Klienci",
+  "satisfied_clients_number": "10",
+  "projects_completed_heading": "Zakończone Projekty",
+  "projects_completed_number": "20",
+  "years_of_experience_heading": "Lata Doświadczenia",
+  "years_of_experience_number": "5",
+  "skills_heading": "Moje Umiejętności",
+  "experience_heading": "Doświadczenie",
+  "education_heading": "Edukacja",
+  "passion_fuels_purpose": "Pasja napędza cel!"
 }

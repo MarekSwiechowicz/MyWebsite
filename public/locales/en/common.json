@@ -1,8 +1,22 @@
 {
-  "animated_text": "Turning Vision Into Reality With Code And Design.",
-  "developer_description": "As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications. Explore my latest projects and articles, showcasing my expertise in React.js and web development.",
+  "animated_text": "Transforming Vision Into Reality Through Coding and Design.",
+  "developer_description": "As an experienced full-stack developer, I am committed to transforming ideas into innovative web applications. Explore my latest projects and articles, showcasing my expertise in React.js and web development.",
   "resume_button": "Resume",
   "contact_link": "Contact",
-  "profile_pic_alt": "Marek",
-  "lightbulb_pic_alt": "Lightbulb"
+  "profile_pic_alt": "Marek's Profile Picture",
+  "lightbulb_pic_alt": "Lightbulb",
+  "biography_heading": "Biography",
+  "biography_paragraph_1": "Hi, I'm Marek, a web developer with a year of experience in creating functional and user-friendly digital solutions. I pride myself on delivering projects that are not only visually appealing but also solve real problems and provide smooth user experiences.",
+  "biography_paragraph_2": "I believe that great design is more than just looks - it's about creating solutions and enjoyable interactions. My interests extend across various digital mediums, from websites to mobile apps, where I apply my commitment to design excellence and user-centric principles.",
+  "biography_paragraph_3": "In every project, I strive to use my skills and enthusiasm to realize your vision. I'm eagerly looking forward to bringing my knowledge and fresh perspective to your next project.",
+  "satisfied_clients_heading": "Satisfied Clients",
+  "satisfied_clients_number": "10",
+  "projects_completed_heading": "Projects Completed",
+  "projects_completed_number": "20",
+  "years_of_experience_heading": "Years of Experience",
+  "years_of_experience_number": "5",
+  "skills_heading": "My Skills",
+  "experience_heading": "Experience",
+  "education_heading": "Education",
+  "passion_fuels_purpose": "Passion Fuels Purpose!"
 }

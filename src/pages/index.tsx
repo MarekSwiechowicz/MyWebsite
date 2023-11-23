@@ -7,12 +7,12 @@ import Link from 'next/link';
 import { LinkArrow } from '../../public/LinkedArrow';
 import lightBulb from '../../public/lightbulb.svg';
 import { TransitionEffect } from '@/components/TransitionEffect';
-import { useTranslation } from 'next-i18next'; // Import useTranslation
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 
 export default function Home() {
-  const { t } = useTranslation('common'); // Initialize useTranslation
+  const { t } = useTranslation('common');
 
   return (
     <>
