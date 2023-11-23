@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 
 type SkillProps = {
   name: string;
@@ -24,10 +25,12 @@ const Skill: React.FC<SkillProps> = ({ name, x, y }) => {
 };
 
 export const Skills = () => {
+  const { t } = useTranslation('common');
+
   return (
     <>
-      <h2 className='font-bold text-6xl sm:text-8xl mt-32 sm:mt-64 w-full text-center'>
-        Skills
+      <h2 className='font-bold text-5xl mb-4 sm:text-8xl mt-32 sm:mt-64 w-full text-center'>
+        {t('skills')}
       </h2>
       <div
         className='w-full h-[50vh] sm:h-[80vh] lg:h-[100vh] mb-32 relative flex items-center

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { LiIcon } from './LiIcon';
+import { useTranslation } from 'next-i18next';
 
 type DetailsProps = {
   type: string;
@@ -35,15 +36,17 @@ const Details: React.FC<DetailsProps> = ({ type, time, place, info }) => {
 };
 
 export const Education = () => {
+  const { t } = useTranslation('common');
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'center start'],
   });
   return (
-    <div className='my-64'>
+    <div className='my-16 md:my-64'>
       <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-16 sm:mb-32'>
-        Education
+        {t('educationTitle')}
       </h2>
       <div
         ref={ref}
@@ -56,16 +59,16 @@ export const Education = () => {
         ></motion.div>
         <ul className='w-full flex flex-col items-start justify-between ml-2 sm:ml-4'>
           <Details
-            type='Batchelor Of Science In Computer Science'
+            type={t('batchelor')}
             time='2017-2021'
-            place='Cracow University of Technology'
-            info='Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial Intelligence'
+            place={t('batchelorAcademy')}
+            info={t('batchelorInfo')}
           ></Details>
           <Details
-            type='Master of Science in Computer Science Specialization in Cybersecurity'
+            type={t('masters')}
             time='2021-2022'
-            place='Cracow University of Technology'
-            info="Master's coursework included hands-on experience with security assessment and penetration testing tools such as Nmap, SonarQube, Burp Suite, and BeEF, emphasizing practical approaches to vulnerability analysis and network security."
+            place={t('mastersAcademy')}
+            info={t('mastersInfo')}
           ></Details>
         </ul>
       </div>

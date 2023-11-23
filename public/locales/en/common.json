@@ -24,5 +24,17 @@
   "projects": "Projects",
   "github": "GitHub",
   "linkedin": "LinkedIn",
-  "menuButton": "Menu"
+  "skills": "Skills",
+  "experienceTitle": "Experience",
+  "workDescriptionGeeknauts": "I worked on web and mobile application development both in a team and independently; as part of a team, I collaborated on complex projects for various clients, and in solo roles, I managed the full spectrum of development tasks from concept to completion.",
+  "workDescriptionRabeSoft": "I took on the role of a frontend engineer for the mobile DinnerDate app, focusing on enhancing user interface and experience. My work involved implementing interactive design elements and ensuring seamless functionality across various devices.",
+  "workDescriptionVisualSoft": "I was the sole frontend developer for the Smartkid app, leveraging React Native for cross-platform functionality and Fastlane for streamlined deployment. My work involved building a rich user interface and integrating key features using modern tools like Firebase and Redux for robust app performance.",
+  "workDescriptionEternis": "During the development of the Eternis website, I employed Next.js and Strapi for efficient performance and content management. My contribution also involved implementing Chakra UI to achieve a responsive and user-friendly interface.",
+  "educationTitle": "Education",
+  "batchelor": "Batchelor Of Science In Computer Science",
+  "batchelorAcademy": "Cracow University of Technology",
+  "batchelorInfo": "Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial Intelligence",
+  "masters": "Master of Science in Computer Science Specialization in Cybersecurity",
+  "mastersAcademy": "Cracow University of Technology",
+  "mastersInfo": "Master's coursework included hands-on experience with security assessment and penetration testing tools such as Nmap, SonarQube, Burp Suite, and BeEF, emphasizing practical approaches to vulnerability analysis and network security."
 }

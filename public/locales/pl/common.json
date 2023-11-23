@@ -24,5 +24,18 @@
   "projects": "Projekty",
   "github": "GitHub",
   "linkedin": "LinkedIn",
-  "menuButton": "Menu"
+  "menuButton": "Menu",
+  "skills": "Umiejętności",
+  "experienceTitle": "Doświadczenie",
+  "workDescriptionGeeknauts": "Pracowałem nad rozwojem aplikacji webowych i mobilnych zarówno w zespole, jak i samodzielnie; jako część zespołu współpracowałem nad złożonymi projektami dla różnych klientów, a w rolach solowych zarządzałem pełnym spektrum zadań rozwojowych od koncepcji do realizacji.",
+  "workDescriptionRabeSoft": "Podjąłem rolę inżyniera frontendu w aplikacji mobilnej DinnerDate, skupiając się na ulepszaniu interfejsu użytkownika i doświadczenia użytkownika. Moja praca obejmowała wdrażanie interaktywnych elementów projektu i zapewnianie płynnej funkcjonalności na różnych urządzeniach.",
+  "workDescriptionVisualSoft": "Byłem jedynym programistą frontendu aplikacji Smartkid, wykorzystując React Native dla funkcjonalności cross-platform i Fastlane dla uproszczonego wdrożenia. Moja praca obejmowała budowanie bogatego interfejsu użytkownika i integrację kluczowych funkcji za pomocą nowoczesnych narzędzi, takich jak Firebase i Redux, dla solidnej wydajności aplikacji.",
+  "workDescriptionEternis": "Podczas opracowywania strony internetowej Eternis, wykorzystałem Next.js i Strapi dla efektywnej wydajności i zarządzania treścią. Mój wkład obejmował również wdrożenie Chakra UI, aby osiągnąć responsywny i przyjazny dla użytkownika interfejs.",
+  "educationTitle": "Edukacja",
+  "batchelor": "Licencjat z Informatyki",
+  "batchelorAcademy": "Politechnika Krakowska",
+  "batchelorInfo": "Do istotnych kursów należały Struktury Danych i Algorytmy, Inżynieria Systemów Komputerowych oraz Sztuczna Inteligencja",
+  "masters": "Magisterium z Informatyki, Specjalizacja w Cyberbezpieczeństwie",
+  "mastersAcademy": "Politechnika Krakowska",
+  "mastersInfo": "Studia magisterskie obejmowały praktyczne doświadczenie z narzędziami do oceny bezpieczeństwa i testowania penetracyjnego, takimi jak Nmap, SonarQube, Burp Suite i BeEF, z naciskiem na praktyczne podejścia do analizy podatności i bezpieczeństwa sieci."
 }

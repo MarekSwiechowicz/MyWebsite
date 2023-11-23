@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { LiIcon } from './LiIcon';
+import { useTranslation } from 'next-i18next';
 
 type DetailsProps = {
   position: string;
@@ -58,10 +59,12 @@ export const Experience = () => {
     target: ref,
     offset: ['start end', 'center start'],
   });
+  const { t } = useTranslation('common');
+
   return (
-    <div className='my-64'>
+    <div className=''>
       <h2 className=' font-bold text-4xl md:text-8xl text-center w-full mb-16 sm:mb-32'>
-        Experience
+        {t('experienceTitle')}
       </h2>
       <div
         ref={ref}
@@ -78,7 +81,7 @@ export const Experience = () => {
             company='Geeknauts'
             time='2022-2023'
             companyLink='https://geeknauts.com/pl/'
-            work='I worked on web and mobile application development both in a team and independently; as part of a team, I collaborated on complex projects for various clients, and in solo roles, I managed the full spectrum of development tasks from concept to completion.'
+            work={t('workDescriptionGeeknauts')}
             adress='Geeknauts'
           ></Details>
           <Details
@@ -86,7 +89,7 @@ export const Experience = () => {
             company='RabeSoft'
             time='2022'
             companyLink=''
-            work='I took on the role of a frontend engineer for the mobile DinnerDate app, focusing on enhancing user interface and experience. My work involved implementing interactive design elements and ensuring seamless functionality across various devices.'
+            work={t('workDescriptionRabeSoft')}
             adress='RabeSoft'
           ></Details>
           <Details
@@ -94,7 +97,7 @@ export const Experience = () => {
             company='VisualSoft'
             time='2022-2023'
             companyLink='https://visualsoft.com.pl/'
-            work='I was the sole frontend developer for the Smartkid app, leveraging React Native for cross-platform functionality and Fastlane for streamlined deployment. My work involved building a rich user interface and integrating key features using modern tools like Firebase and Redux for robust app performance.'
+            work={t('workDescriptionVisualSoft')}
             adress='VisualSoft'
           ></Details>
           <Details
@@ -102,7 +105,7 @@ export const Experience = () => {
             company='Eternis'
             time='2022'
             companyLink='https://eternis.pl/'
-            work='During the development of the Eternis website, I employed Next.js and Strapi for efficient performance and content management. My contribution also involved implementing Chakra UI to achieve a responsive and user-friendly interface.'
+            work={t('workDescriptionEternis')}
             adress='Eternis'
           ></Details>
         </ul>
