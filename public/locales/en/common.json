@@ -18,5 +18,11 @@
   "skills_heading": "My Skills",
   "experience_heading": "Experience",
   "education_heading": "Education",
-  "passion_fuels_purpose": "Passion Fuels Purpose!"
+  "passion_fuels_purpose": "Passion Fuels Purpose!",
+  "home": "Home",
+  "about": "About",
+  "projects": "Projects",
+  "github": "GitHub",
+  "linkedin": "LinkedIn",
+  "menuButton": "Menu"
 }

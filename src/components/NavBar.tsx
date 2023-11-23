@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { useThemeSwitcher } from './hooks/useThemeSwitcher';
 import AnimatedColorModeIcon from './AnimatedColorModeIcon';
 import { twMerge } from 'tailwind-merge';
+import { useTranslation } from 'next-i18next';
 
 type CustomLinkProps = {
   href: string;
@@ -74,6 +75,7 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
 const NavBar = () => {
   const [mode, setMode] = useThemeSwitcher();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation('common'); // Assuming 'common' is your namespace for common texts
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -107,8 +109,12 @@ const NavBar = () => {
       {/* desktop bar */}
       <div className='w-full hidden justify-between items-center lg:flex'>
         <nav>
-          <CustomLink href='/' title='Home' className='mr-4'></CustomLink>
-          <CustomLink href='/about' title='About' className='mx-4'></CustomLink>
+          <CustomLink href='/' title={t('home')} className='mr-4'></CustomLink>
+          <CustomLink
+            href='/about'
+            title={t('about')}
+            className='mx-4'
+          ></CustomLink>
         </nav>
 
         <nav className='flex items-center justify-center flex-wrap'>

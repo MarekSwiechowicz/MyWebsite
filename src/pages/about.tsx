@@ -125,7 +125,7 @@ const About = () => {
 export default About;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const locale = context.locale || 'en'; // Fallback to 'en' if locale is undefined
+  const locale = context.locale || 'en';
 
   return {
     props: {
