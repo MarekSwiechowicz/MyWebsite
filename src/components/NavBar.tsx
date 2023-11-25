@@ -9,6 +9,7 @@ import { useThemeSwitcher } from './hooks/useThemeSwitcher';
 import AnimatedColorModeIcon from './AnimatedColorModeIcon';
 import { twMerge } from 'tailwind-merge';
 import { useTranslation } from 'next-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 type CustomLinkProps = {
   href: string;
@@ -110,6 +111,7 @@ const NavBar = () => {
       <div className='w-full hidden justify-between items-center lg:flex'>
         <nav>
           <CustomLink href='/' title={t('home')} className='mr-4'></CustomLink>
+
           <CustomLink
             href='/about'
             title={t('about')}
@@ -141,6 +143,7 @@ const NavBar = () => {
             mode={mode}
             setMode={setMode}
           ></AnimatedColorModeIcon>
+          <LanguageSwitcher></LanguageSwitcher>
         </nav>
       </div>
 
@@ -197,6 +200,7 @@ const NavBar = () => {
               mode={mode}
               setMode={setMode}
             ></AnimatedColorModeIcon>
+            <LanguageSwitcher></LanguageSwitcher>
           </nav>
         </motion.div>
       ) : null}
