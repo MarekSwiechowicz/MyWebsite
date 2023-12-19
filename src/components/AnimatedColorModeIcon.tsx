@@ -16,9 +16,7 @@ const AnimatedColorModeIcon: React.FC<AnimatedColorModeIconProps> = ({
     <div
       style={{ cursor: "pointer" }}
       onClick={() => setMode(mode === "dark" ? "light" : "dark")}
-      className={`ml-3 flex items-center justify-center rounded-full p-0.5 ${
-        mode === "dark" ? "bg-light text-dark" : "bg-dark text-light"
-      } `}
+      className="ml-3 flex items-center justify-center rounded-full p-0.5 bg-light text-dark"
     >
       {mode === "dark" ? <SunIcon /> : <MoonIcon />}
     </div>
