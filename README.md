@@ -12,3 +12,11 @@ API endpoints (e.g., http://localhost:3000/api/hello) are in pages/api.
 This project optimizes fonts using next/font, featuring the Inter Google Font.
 
 I needed to change nextjs to 13.2.4 so framer motion works
+
+Things to do:
+-change photos
+
+mobile version
+-moving navigation bar
+-closing modal (after clicking outside)
+-icon of the moon doesnt work properly
