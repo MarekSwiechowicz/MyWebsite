@@ -108,7 +108,7 @@ const NavBar = () => {
       </button>
 
       {/* desktop bar */}
-      <div className="w-full hidden justify-between items-center lg:flex">
+      <div className="w-full hidden lg:flex justify-between items-center ">
         <nav>
           <CustomLink href="/" title={t("home")} className="mr-4"></CustomLink>
 
