@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import GithubIcon from "../../public/GithubIcon";
 import LinkedinIcon from "../../public/LinkedinIcon";
 import { motion } from "framer-motion";
-import { useThemeSwitcher } from "./hooks/useThemeSwitcher";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -74,7 +73,6 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
 };
 
 const NavBar = () => {
-  const [mode, setMode] = useThemeSwitcher();
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation("common"); // Assuming 'common' is your namespace for common texts
 
