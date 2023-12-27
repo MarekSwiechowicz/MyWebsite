@@ -74,11 +74,17 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation("common"); // Assuming 'common' is your namespace for common texts
+  const { t } = useTranslation("common");
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  const Links = [
+    { href: "/", title: "home", className: "mr-4" },
+    { href: "/about", title: "about", className: "mx-4" },
+  ];
+
   return (
     <header
       className={twMerge(
@@ -108,13 +114,14 @@ const NavBar = () => {
       {/* desktop bar */}
       <div className="w-full hidden lg:flex justify-between items-center ">
         <nav>
-          <CustomLink href="/" title={t("home")} className="mr-4"></CustomLink>
-
-          <CustomLink
-            href="/about"
-            title={t("about")}
-            className="mx-4"
-          ></CustomLink>
+          {Links.map((link) => (
+            <CustomLink
+              key={link.title}
+              href={link.href}
+              title={t(link.title)}
+              className={link.className}
+            />
+          ))}
         </nav>
 
         <nav className="flex items-center justify-center flex-wrap">
@@ -152,24 +159,15 @@ const NavBar = () => {
             bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
         >
           <nav className="flex items-center flex-col justify-center">
-            <CustomMobileLink
-              toggle={handleClick}
-              href="/"
-              title="Home"
-              className=""
-            ></CustomMobileLink>
-            <CustomMobileLink
-              toggle={handleClick}
-              href="/about"
-              title="About"
-              className=""
-            ></CustomMobileLink>
-            <CustomMobileLink
-              toggle={handleClick}
-              href="/projects"
-              title="Projects"
-              className=""
-            ></CustomMobileLink>
+            {Links.map((link) => (
+              <CustomMobileLink
+                key={link.title}
+                toggle={handleClick}
+                href={link.href}
+                title={t(link.title)}
+                className=""
+              />
+            ))}
           </nav>
 
           <nav className="flex items-center justify-center flex-wrap mt-2">
