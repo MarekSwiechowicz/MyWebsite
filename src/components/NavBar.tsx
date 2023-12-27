@@ -6,10 +6,10 @@ import GithubIcon from "../../public/GithubIcon";
 import LinkedinIcon from "../../public/LinkedinIcon";
 import { motion } from "framer-motion";
 import { useThemeSwitcher } from "./hooks/useThemeSwitcher";
-import AnimatedColorModeIcon from "./AnimatedColorModeIcon";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import ThemeIcon from "./ThemeIcon";
 
 type CustomLinkProps = {
   href: string;
@@ -139,10 +139,8 @@ const NavBar = () => {
             <LinkedinIcon></LinkedinIcon>
           </motion.a>
 
-          <AnimatedColorModeIcon
-            mode={mode}
-            setMode={setMode}
-          ></AnimatedColorModeIcon>
+          <ThemeIcon />
+
           <LanguageSwitcher></LanguageSwitcher>
         </nav>
       </div>
@@ -195,11 +193,7 @@ const NavBar = () => {
             >
               <LinkedinIcon></LinkedinIcon>
             </motion.a>
-
-            <AnimatedColorModeIcon
-              mode={mode}
-              setMode={setMode}
-            ></AnimatedColorModeIcon>
+            <ThemeIcon />
             <LanguageSwitcher></LanguageSwitcher>
           </nav>
         </motion.div>
