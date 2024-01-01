@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS to hide elements between 768px and 1023px */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hide-between-md-lg {
-    display: none;
-  }
-}
-
 /* Custom smaller text size */
 .text-xxs {
   font-size: 0.6rem;

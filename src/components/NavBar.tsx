@@ -9,6 +9,7 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import ThemeIcon from "./ThemeIcon";
+import MoonIcon from "../../public/MoonIcon";
 
 type CustomLinkProps = {
   href: string;
@@ -51,7 +52,9 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
 }) => {
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+
     toggle();
     router.push(href);
   };
@@ -110,7 +113,10 @@ const NavBar = () => {
           }`}
         ></span>
       </button>
-
+      {/* wird workaround about moonicon doesnt show correctly  */}
+      <div className=" opacity-0">
+        <MoonIcon></MoonIcon>
+      </div>
       {/* desktop bar */}
       <div className="w-full hidden lg:flex justify-between items-center ">
         <nav>
