@@ -24,7 +24,7 @@ export const Footer = () => {
           <span className="underline">Marek</span>
         </div>
         <Link
-          href="/"
+          href="mailto:marek.swiechowicz.linkedin@gmail.com"
           target={"_blank"}
           className=" underline underline-offset-2"
         >

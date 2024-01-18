@@ -88,7 +88,7 @@ export const Experience = () => {
             position="Frontend Engineer"
             company="RabeSoft"
             time="2022"
-            companyLink=""
+            companyLink="https://www.linkedin.com/in/%C5%82ukasz-szumowski-39827378/?locale=en_US"
             work={t("workDescriptionRabeSoft")}
             adress="RabeSoft"
           ></Details>
