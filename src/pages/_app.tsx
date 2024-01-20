@@ -1,6 +1,6 @@
 import { appWithTranslation } from "next-i18next";
 import { Footer } from "@/components/Footer";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/Navbar/NavBar";
 import "@/styles/globals.css";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";

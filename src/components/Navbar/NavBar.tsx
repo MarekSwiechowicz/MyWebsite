@@ -1,78 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
-import GithubIcon from "../../public/GithubIcon";
-import LinkedinIcon from "../../public/LinkedinIcon";
-import ThemeIcon from "./ThemeIcon";
-import MoonIcon from "../../public/MoonIcon";
-import Logo from "./Logo";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-
-type CustomLinkProps = {
-  href: string;
-  title: string;
-  className?: string;
-};
-
-type CustomMobileLinkProps = {
-  href: string;
-  title: string;
-  className?: string;
-  toggle: () => void;
-};
-
-const CustomLink: React.FC<CustomLinkProps> = ({
-  href,
-  title,
-  className = "",
-}) => {
-  const router = useRouter();
-  return (
-    <Link className={`${className} relative group`} href={href}>
-      {title}
-      <span
-        className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-          router.asPath === href ? "w-full" : "w-0"
-        } dark:bg-light`}
-      >
-        &nbsp;
-      </span>
-    </Link>
-  );
-};
-
-const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
-  href,
-  title,
-  className = "",
-  toggle,
-}) => {
-  const router = useRouter();
-
-  const handleClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    toggle();
-    router.push(href);
-  };
-  return (
-    <button
-      className={`${className} relative group text-light dark:text-dark my-2`}
-      onClick={handleClick}
-    >
-      {title}
-      <span
-        className={`h-[2px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
-          router.asPath === href ? "w-full" : "w-0"
-        } dark:bg-dark`}
-      >
-        &nbsp;
-      </span>
-    </button>
-  );
-};
+import GithubIcon from "../../../public/GithubIcon";
+import LinkedinIcon from "../../../public/LinkedinIcon";
+import ThemeIcon from "../ThemeIcon";
+import MoonIcon from "../../../public/MoonIcon";
+import Logo from "../Logo";
+import { LanguageSwitcher } from "../LanguageSwitcher";
+import { CustomLink } from "./CustomLink";
+import { CustomMobileLink } from "./CustomMobileLink";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
