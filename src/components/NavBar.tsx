@@ -1,15 +1,15 @@
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import React, { useState } from "react";
-import Logo from "./Logo";
 import { useRouter } from "next/router";
-import GithubIcon from "../../public/GithubIcon";
-import LinkedinIcon from "../../public/LinkedinIcon";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import GithubIcon from "../../public/GithubIcon";
+import LinkedinIcon from "../../public/LinkedinIcon";
 import ThemeIcon from "./ThemeIcon";
 import MoonIcon from "../../public/MoonIcon";
+import Logo from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type CustomLinkProps = {
   href: string;
@@ -34,7 +34,7 @@ const CustomLink: React.FC<CustomLinkProps> = ({
     <Link className={`${className} relative group`} href={href}>
       {title}
       <span
-        className={`h-[2px] inline-block  bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+        className={`h-[2px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
           router.asPath === href ? "w-full" : "w-0"
         } dark:bg-light`}
       >
@@ -54,7 +54,6 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
 
   const handleClick = (event: React.MouseEvent) => {
     event.stopPropagation();
-
     toggle();
     router.push(href);
   };
@@ -65,9 +64,9 @@ const CustomMobileLink: React.FC<CustomMobileLinkProps> = ({
     >
       {title}
       <span
-        className={`h-[2px] inline-block  bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
+        className={`h-[2px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${
           router.asPath === href ? "w-full" : "w-0"
-        } dark:bg-dark `}
+        } dark:bg-dark`}
       >
         &nbsp;
       </span>
@@ -83,6 +82,23 @@ const NavBar = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeOnOutsideClick = (event: MouseEvent) => {
+    const modal = document.getElementById("modalId");
+    if (isOpen && modal && !modal.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", closeOnOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", closeOnOutsideClick);
+    };
+  }, [isOpen]);
+
   const Links = [
     { href: "/", title: "home", className: "mr-4" },
     { href: "/about", title: "about", className: "mx-4" },
@@ -91,7 +107,7 @@ const NavBar = () => {
   return (
     <header
       className={twMerge(
-        "w-full px-8 md:px-16 lg:px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10 "
+        "w-full px-8 md:px-16 lg:px-32 py-8 font-medium flex items-center justify-between dark:text-light relative z-10"
       )}
     >
       <button
@@ -155,14 +171,13 @@ const NavBar = () => {
           <LanguageSwitcher></LanguageSwitcher>
         </nav>
       </div>
-
-      {/* mobile bar */}
+      {/* mobile bar */}{" "}
       {isOpen ? (
         <motion.div
+          id="modalId"
           initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
           animate={{ scale: 1, opacity: 1 }}
-          className="min-w-[70vw] flex flex-col justify-between items-center z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-            bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
+          className="min-w-[70vw] flex flex-col justify-between items-center z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
         >
           <nav className="flex items-center flex-col justify-center">
             {Links.map((link) => (
@@ -200,7 +215,6 @@ const NavBar = () => {
           </nav>
         </motion.div>
       ) : null}
-
       <div className="absolute left-[50%] top-2 translate-x-[-50%]">
         <Logo></Logo>
       </div>
