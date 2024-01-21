@@ -54,12 +54,56 @@ const Details: React.FC<DetailsProps> = ({
 };
 
 export const Experience = () => {
+  const { t } = useTranslation("common");
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "center start"],
   });
-  const { t } = useTranslation("common");
+
+  const workExperiences = [
+    {
+      position: "Quality Assurance",
+      company: "ThunderSoft",
+      time: "2023-now",
+      companyLink: "https://www.thundersoft.com/",
+      workDescriptionKey: "workDescriptionThunderSoft",
+      address: "ThunderSoft",
+    },
+    {
+      position: "Frontend Engineer",
+      company: "VisualSoft",
+      time: "2022-2023",
+      companyLink: "https://visualsoft.com.pl/",
+      workDescriptionKey: "workDescriptionVisualSoft",
+      address: "VisualSoft",
+    },
+    {
+      position: "Frontend Engineer",
+      company: "RabeSoft",
+      time: "2022",
+      companyLink:
+        "https://www.linkedin.com/in/%C5%82ukasz-szumowski-39827378/?locale=en_US",
+      workDescriptionKey: "workDescriptionRabeSoft",
+      address: "RabeSoft",
+    },
+    {
+      position: "Full-Stack Engineer",
+      company: "Eternis",
+      time: "2022",
+      companyLink: "https://eternis.pl/",
+      workDescriptionKey: "workDescriptionEternis",
+      address: "Eternis",
+    },
+    {
+      position: "Web Developer",
+      company: "Geeknauts",
+      time: "2022-2023",
+      companyLink: "https://geeknauts.com/pl/",
+      workDescriptionKey: "workDescriptionGeeknauts",
+      address: "Geeknauts",
+    },
+  ];
 
   return (
     <div className="">
@@ -76,38 +120,17 @@ export const Experience = () => {
            bg-dark origin-top  dark:bg-primaryDark dark:shadow-primaryDark dark:shadow-3xl  "
         ></motion.div>
         <ul className="w-full flex flex-col items-start justify-between ml-2 sm:ml-4">
-          <Details
-            position="Web Developer"
-            company="Geeknauts"
-            time="2022-2023"
-            companyLink="https://geeknauts.com/pl/"
-            work={t("workDescriptionGeeknauts")}
-            adress="Geeknauts"
-          ></Details>
-          <Details
-            position="Frontend Engineer"
-            company="RabeSoft"
-            time="2022"
-            companyLink="https://www.linkedin.com/in/%C5%82ukasz-szumowski-39827378/?locale=en_US"
-            work={t("workDescriptionRabeSoft")}
-            adress="RabeSoft"
-          ></Details>
-          <Details
-            position="Frontend Engineer"
-            company="VisualSoft"
-            time="2022-2023"
-            companyLink="https://visualsoft.com.pl/"
-            work={t("workDescriptionVisualSoft")}
-            adress="VisualSoft"
-          ></Details>
-          <Details
-            position="Full-Stack Engineer"
-            company="Eternis"
-            time="2022"
-            companyLink="https://eternis.pl/"
-            work={t("workDescriptionEternis")}
-            adress="Eternis"
-          ></Details>
+          {workExperiences.map((experience, index) => (
+            <Details
+              key={index}
+              position={experience.position}
+              company={experience.company}
+              time={experience.time}
+              companyLink={experience.companyLink}
+              work={t(experience.workDescriptionKey)}
+              adress={experience.address}
+            />
+          ))}
         </ul>
       </div>
     </div>
