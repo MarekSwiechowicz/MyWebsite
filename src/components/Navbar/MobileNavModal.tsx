@@ -5,6 +5,7 @@ import GithubIcon from "../../../public/GithubIcon";
 import LinkedinIcon from "../../../public/LinkedinIcon";
 import { CustomMobileLink } from "./CustomMobileLink";
 import ThemeIcon from "../ThemeIcon";
+import { LanguageSwitcher } from "../LanguageSwitcher";
 
 interface MobileNavModalProps {
   isOpen: boolean;
@@ -61,6 +62,7 @@ export const MobileNavModal: React.FC<MobileNavModalProps> = ({
           <LinkedinIcon />
         </motion.a>
         <ThemeIcon />
+        <LanguageSwitcher />
       </nav>
     </motion.div>
   );
