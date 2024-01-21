@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
-import GithubIcon from "../../../public/GithubIcon";
-import LinkedinIcon from "../../../public/LinkedinIcon";
-import ThemeIcon from "../ThemeIcon";
 import MoonIcon from "../../../public/MoonIcon";
 import Logo from "../Logo";
-import { LanguageSwitcher } from "../LanguageSwitcher";
-import { CustomLink } from "./CustomLink";
-import { CustomMobileLink } from "./CustomMobileLink";
+import DesktopNav from "./DesktopNavbar";
+import { MobileNavModal } from "./MobileNavModal";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,92 +61,12 @@ const NavBar = () => {
           }`}
         ></span>
       </button>
-      {/* wird workaround about moonicon doesnt show correctly  */}
+      {/* workaround about moonicon doesnt show correctly  */}
       <div className=" opacity-0">
         <MoonIcon></MoonIcon>
       </div>
-      {/* desktop bar */}
-      <div className="w-full hidden lg:flex justify-between items-center ">
-        <nav>
-          {Links.map((link) => (
-            <CustomLink
-              key={link.title}
-              href={link.href}
-              title={t(link.title)}
-              className={link.className}
-            />
-          ))}
-        </nav>
-
-        <nav className="flex items-center justify-center flex-wrap">
-          <motion.a
-            whileHover={{ y: -2 }}
-            className="w-6 mx-3 bg-light dark:bg-dark rounded-full"
-            whileTap={{ scale: 0.9 }}
-            href="https://github.com/MarekSwiechowicz"
-            target={"blank"}
-          >
-            <GithubIcon></GithubIcon>
-          </motion.a>
-          <motion.a
-            whileHover={{ y: -2 }}
-            className="w-6 mx-3"
-            whileTap={{ scale: 0.9 }}
-            href="https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/"
-            target={"blank"}
-          >
-            <LinkedinIcon></LinkedinIcon>
-          </motion.a>
-
-          <ThemeIcon />
-
-          <LanguageSwitcher></LanguageSwitcher>
-        </nav>
-      </div>
-      {/* mobile bar */}{" "}
-      {isOpen ? (
-        <motion.div
-          id="modalId"
-          initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="min-w-[70vw] flex flex-col justify-between items-center z-30 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32"
-        >
-          <nav className="flex items-center flex-col justify-center">
-            {Links.map((link) => (
-              <CustomMobileLink
-                key={link.title}
-                toggle={handleClick}
-                href={link.href}
-                title={t(link.title)}
-                className=""
-              />
-            ))}
-          </nav>
-
-          <nav className="flex items-center justify-center flex-wrap mt-2">
-            <motion.a
-              whileHover={{ y: -2 }}
-              className="w-6 mx-3 bg-light dark:bg-dark rounded-full sm:mx-1"
-              whileTap={{ scale: 0.9 }}
-              href="https://github.com/MarekSwiechowicz"
-              target={"blank"}
-            >
-              <GithubIcon></GithubIcon>
-            </motion.a>
-            <motion.a
-              whileHover={{ y: -2 }}
-              className="w-6 mx-3 sm:mx-1"
-              whileTap={{ scale: 0.9 }}
-              href="https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/"
-              target={"blank"}
-            >
-              <LinkedinIcon></LinkedinIcon>
-            </motion.a>
-            <ThemeIcon />
-            <LanguageSwitcher></LanguageSwitcher>
-          </nav>
-        </motion.div>
-      ) : null}
+      <DesktopNav></DesktopNav>
+      <MobileNavModal isOpen={isOpen} handleClick={handleClick} />
       <div className="absolute left-[50%] top-2 translate-x-[-50%]">
         <Logo></Logo>
       </div>
