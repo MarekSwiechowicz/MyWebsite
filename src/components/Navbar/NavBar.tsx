@@ -16,7 +16,14 @@ const NavBar = () => {
 
   const closeOnOutsideClick = (event: MouseEvent) => {
     const modal = document.getElementById("modalId");
-    if (isOpen && modal && !modal.contains(event.target as Node)) {
+    const button = document.getElementById("buttonId");
+    if (
+      isOpen &&
+      modal &&
+      button &&
+      !modal.contains(event.target as Node) &&
+      !button.contains(event.target as Node)
+    ) {
       setIsOpen(false);
     }
   };
@@ -43,6 +50,7 @@ const NavBar = () => {
       )}
     >
       <button
+        id="buttonId"
         className=" flex lg:hidden flex-col justify-center items-center"
         onClick={handleClick}
       >
