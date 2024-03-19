@@ -92,7 +92,7 @@ const About = () => {
               </div>
               <div className=" flex flex-col xl:items-end justify-center items-center">
                 <span className=" inline-block text-4xl md:text-7xl font-bold">
-                  <AnimatedNumbers value={10}></AnimatedNumbers>+
+                  <AnimatedNumbers value={20}></AnimatedNumbers>+
                 </span>
                 <h2 className=" text-xxs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75">
                   {t("projects_completed_heading")}
