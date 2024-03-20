@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import Facebook from "@/components/Facebook";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <AnimatePresence mode="wait">
             <Component key={router.asPath} {...pageProps} />
           </AnimatePresence>
+          <Facebook></Facebook>
           <Footer></Footer>
         </ThemeProvider>
       </main>
