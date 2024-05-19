@@ -49,9 +49,9 @@ export const Skills = () => {
         <Skill name="JavaScript" x="21vw" y="6vw"></Skill>
         <Skill name="ReactJS" x="0vw" y="11vw"></Skill>
         <Skill name="NextJS" x="-20vw" y="-9vw"></Skill>
-        <Skill name="GatsbyJS" x="23vw" y="-5vw"></Skill>
+        <Skill name="Python" x="23vw" y="-5vw"></Skill>
         <Skill name="Jest" x="0vw" y="-19vw"></Skill>
-        <Skill name="Tailwind CSS" x="10vw" y="-14vw"></Skill>
+        <Skill name="Selenium" x="10vw" y="-14vw"></Skill>
       </div>
     </>
   );

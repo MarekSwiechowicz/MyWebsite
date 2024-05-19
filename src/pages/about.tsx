@@ -49,7 +49,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <title>{t("page_title", "About Page")}</title>
+        <title>{t("page_title", "About")}</title>
         <meta name="description" content="any description"></meta>
       </Head>
       <TransitionEffect />

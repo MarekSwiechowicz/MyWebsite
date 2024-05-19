@@ -63,23 +63,23 @@ export const Experience = () => {
 
   const workExperiences = [
     {
-      position: "Quality Assurance",
+      position: "Test Engineer",
       company: "ThunderSoft",
-      time: "2023-now",
+      time: "2022-now",
       companyLink: "https://www.thundersoft.com/",
       workDescriptionKey: "workDescriptionThunderSoft",
       address: "ThunderSoft",
     },
     {
-      position: "Frontend Engineer",
+      position: "Frontend Developer",
       company: "VisualSoft",
-      time: "2022-2023",
+      time: "2021-2022",
       companyLink: "https://visualsoft.com.pl/",
       workDescriptionKey: "workDescriptionVisualSoft",
       address: "VisualSoft",
     },
     {
-      position: "Frontend Engineer",
+      position: "Frontend Developer",
       company: "RabeSoft",
       time: "2022",
       companyLink:
@@ -96,9 +96,9 @@ export const Experience = () => {
       address: "Eternis",
     },
     {
-      position: "Web Developer",
+      position: "Software Engineer",
       company: "Geeknauts",
-      time: "2022-2023",
+      time: "2021-2022",
       companyLink: "https://geeknauts.com/pl/",
       workDescriptionKey: "workDescriptionGeeknauts",
       address: "Geeknauts",

@@ -20,7 +20,7 @@ export default function Home() {
         <title>{t("page_title", "Marek Święchowicz - Test Engineer")}</title>
         <meta
           name="description"
-          content="Explore the creative portfolio of Marek Święchowicz, a professional web developer specializing in modern, user-friendly web solutions."
+          content="Explore the creative portfolio of Marek Święchowicz."
         ></meta>
       </Head>
       <TransitionEffect></TransitionEffect>
