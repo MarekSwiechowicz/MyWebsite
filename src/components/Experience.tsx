@@ -65,7 +65,7 @@ export const Experience = () => {
     {
       position: 'Quality Assurance',
       company: 'UBIQUITY SERVICE ',
-      time: '2024-now',
+      time: '2024',
       companyLink:
         'https://www.linkedin.com/company/ubiquity-service-sp%C3%B3%C5%82ka-z-ograniczon%C4%85-odpowiedzialno%C5%9Bci%C4%85/mycompany/',
       workDescriptionKey: 'workDescriptionUBIQUITYSERVICE',
