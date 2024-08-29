@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import FacebookMsg from "@/components/FacebookMsg";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </AnimatePresence>
           <FacebookMsg></FacebookMsg>
           <Footer></Footer>
+          <Analytics />
         </ThemeProvider>
       </main>
     </>
