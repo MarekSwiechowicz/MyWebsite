@@ -1,4 +1,4 @@
-This is my portfolio project is built with Next.js.
+My website
 
 Quick Start
 To launch the development server:
