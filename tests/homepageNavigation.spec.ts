@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("homepage has title", async ({ page }) => {
+test("homepage has title Marek Święchowicz", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle("Marek Święchowicz");
 });
