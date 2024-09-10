@@ -4,6 +4,7 @@
   "resume_button": "CV",
   "page_title": "Marek Święchowicz",
   "page_description": "Odkryj projekty, portfolio i doświadczenie zawodowe Marka Święchowicza.",
+  "about_me_content": "Dowiedz się więcej o Marku Święchowiczu, Inżynierze Zapewnienia Jakości. Odkryj moją drogę, projekty i to, co napędza moją pasję do programowania.",
   "contact_link": "Kontakt",
   "profile_pic_alt": "Zdjęcie profilowe Marka",
   "lightbulb_pic_alt": "Żarówka",
@@ -43,5 +44,9 @@
   "allRightsReserved": "Wszystkie prawa zastrzeżone.",
   "buildWithLove": "Stworzone z",
   "by": "przez",
-  "sayHello": "Przywitaj się"
+  "sayHello": "Przywitaj się",
+  "projects_header": "Wyobraźnia przewyższa wiedzę",
+  "Marka": "Marka",
+  "CKeditor_title": "REST API i CKEditor 5 Real-Time Collaboration Showcase",
+  "CKEditor_summary": "Ten projekt demonstruje moje umiejętności w konfigurowaniu i testowaniu REST API, z naciskiem na funkcje współpracy w czasie rzeczywistym. Zawiera kilka projektów i zadań, z których każde dotyczy określonych aspektów integracji i testowania API."
 }

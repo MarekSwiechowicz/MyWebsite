@@ -4,6 +4,7 @@
   "resume_button": "Resume",
   "page_title": "Marek Święchowicz",
   "page_description": "Discover the projects, portfolio, and professional background of Marek Święchowicz.",
+  "about_me_content": "Learn more about Marek Święchowicz, a Quality Assurance Engineer. Discover my journey, projects, and what drives my passion for programming.",
   "contact_link": "Contact",
   "profile_pic_alt": "Marek's Profile Picture",
   "lightbulb_pic_alt": "Lightbulb",
@@ -42,5 +43,9 @@
   "allRightsReserved": "All Rights Reserved.",
   "buildWithLove": "Build With",
   "by": "by",
-  "sayHello": "Say Hello"
+  "sayHello": "Say Hello",
+  "projects_header": "Imagination Trumps Knowledge",
+  "Marka": "Mark",
+  "CKeditor_title": "REST API and CKEditor 5 Real-Time Collaboration Showcase",
+  "CKEditor_summary": "This project demonstrates my expertise in configuring and testing REST APIs, with a focus on real-time collaboration features. It includes several projects and tasks, each addressing specific aspects of API integration and testing."
 }

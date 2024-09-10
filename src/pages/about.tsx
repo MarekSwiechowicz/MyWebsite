@@ -44,13 +44,13 @@ const AnimatedNumbers: React.FC<AnimatedNumbersProps> = ({ value }) => {
 };
 
 const About = () => {
-  const { t } = useTranslation("common"); // Initialize useTranslation
+  const { t } = useTranslation("common");
 
   return (
     <>
       <Head>
         <title>{t("page_title", "About")}</title>
-        <meta name="description" content="any description"></meta>
+        <meta name="description" content={t("about_me_content")}></meta>
       </Head>
       <TransitionEffect />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">

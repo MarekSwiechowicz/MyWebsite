@@ -21,7 +21,7 @@ export const Footer = () => {
             &#9825;
           </span>
           {t("by")} &nbsp;
-          <span className="underline">Marek</span>
+          <span className="underline">{t("Marka")}</span>
         </div>
         <Link
           href="mailto:marek.swiechowicz.linkedin@gmail.com"
