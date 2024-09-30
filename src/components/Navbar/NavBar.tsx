@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "next-i18next";
 import MoonIcon from "../../../public/MoonIcon";
 import Logo from "../Logo";
-import DesktopNav from "./DesktopNavbar";
+import DesktopNav from "./DesktopNav";
 import { MobileNavModal } from "./MobileNavModal";
 
 const NavBar = () => {
