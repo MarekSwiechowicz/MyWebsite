@@ -49,7 +49,7 @@ export const Skills = () => {
         <Skill name="JavaScript" x="21vw" y="6vw"></Skill>
         <Skill name="CI/CD" x="0vw" y="11vw"></Skill>
         <Skill name="Postman" x="-20vw" y="-9vw"></Skill>
-        <Skill name="SQL" x="23vw" y="-5vw"></Skill>
+        <Skill name="Playwright" x="23vw" y="-5vw"></Skill>
         <Skill name="Jest" x="0vw" y="-19vw"></Skill>
         <Skill name="Selenium" x="10vw" y="-14vw"></Skill>
       </div>
