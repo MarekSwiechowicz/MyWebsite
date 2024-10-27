@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1"
         ></meta>
-        <link rel="icon" href="/favicon.ico"></link>
+        <link rel="icon" href="/ms.svg"></link>
       </Head>
       <main
         className={`bg-light w-full min-h-screen dark:bg-dark
