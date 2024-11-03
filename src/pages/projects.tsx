@@ -29,7 +29,7 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
   github,
 }) => {
   return (
-    <article className=" w-full flex items-center justify-between rounded-3xl border border-solid border-dark bg-light shadow-2xl">
+    <article className=" w-full flex items-center justify-between rounded-3xl border border-solid border-dark bg-light shadow-2xl p-12">
       <Link
         href={link}
         target="blank"
@@ -37,13 +37,19 @@ const FeaturedProject: React.FC<FeaturedProjectProps> = ({
       >
         <Image src={img} alt={title} className="w-full h-auto"></Image>
       </Link>
-      <div>
-        <span>{type}</span>
-        <Link href={link} target="blank">
-          <h2>{title}</h2>
+
+      <div className="w-1/2 flex flex-col items-start justify-between pl-6">
+        <span className="text-primary font-medium text-xl">{type}</span>
+        <Link
+          href={link}
+          target="blank"
+          className="hover:underline underline-offset-2"
+        >
+          <h2 className="my-2 w-full text-left text-4xl font-bold">{title}</h2>
         </Link>
-        <p>{summary}</p>
+        <p className="my-2 font-medium text-dark">{summary}</p>
       </div>
+      
       <Link href={github} target="blank">
         <GithubIcon />
       </Link>
@@ -69,9 +75,9 @@ export const Projects = () => {
           <div className="grid grid-cols-12 gap-24">
             <div className="col-span-12">
               <FeaturedProject
-                title={t("CKeditor_title")}
-                summary={t("CKeditor_summary")}
-                link="/"
+                title={t("CKEditor_title")}
+                summary={t("CKEditor_summary")}
+                link="https://github.com/MarekSwiechowicz/rest-api-testing-tool"
                 github="https://github.com/MarekSwiechowicz/rest-api-testing-tool"
                 type="Featured Project"
                 img={CKeditorImage}
