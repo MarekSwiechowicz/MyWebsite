@@ -7,6 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
+import { TransitionEffect } from "@/components/TransitionEffect";
 
 import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
@@ -111,6 +112,7 @@ const Projects: React.FC = () => {
         <title>{t("page_title", "Projects")}</title>
         <meta name="description" content={t("about_me_content")}></meta>
       </Head>
+      <TransitionEffect />
       <main className="flex items-center text-dark w-full dark:text-light">
         <Layout>
           <AnimatedText
