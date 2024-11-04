@@ -38,6 +38,7 @@ const DesktopNav: React.FC = () => {
   const Links: { href: string; title: string; className: string }[] = [
     { href: "/", title: "home", className: "mr-4" },
     { href: "/about", title: "about", className: "mx-4" },
+    { href: "/projects", title: "projects", className: "mx-4" },
   ];
 
   return (

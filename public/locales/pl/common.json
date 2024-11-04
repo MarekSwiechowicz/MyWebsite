@@ -49,5 +49,7 @@
   "projects_header": "Wyobraźnia przewyższa wiedzę!",
   "Marka": "Marka",
   "CKEditor_title": "REST API i CKEditor 5 Real-Time Collaboration Showcase",
-  "CKEditor_summary": "Ten projekt demonstruje moje umiejętności w konfigurowaniu i testowaniu REST API, z naciskiem na funkcje współpracy w czasie rzeczywistym. Zawiera kilka projektów i zadań, z których każde dotyczy określonych aspektów integracji i testowania API."
+  "CKEditor_summary": "Ten projekt demonstruje moje umiejętności w konfigurowaniu i testowaniu REST API, z naciskiem na funkcje współpracy w czasie rzeczywistym. Zawiera kilka projektów i zadań, z których każde dotyczy określonych aspektów integracji i testowania API.",
+  "CKEditor_projectType": "Wyróżniony Projekt",
+  "T-mobile_summary": "Ten projekt demonstruje automatyczne testowanie procesu zakupu produktu na stronie internetowej T-Mobile z użyciem Selenium WebDriver z Java i Cucumber."
 }
