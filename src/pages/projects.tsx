@@ -128,20 +128,21 @@ const Projects: React.FC = () => {
               image={CKeditorImage}
             />
             <Project
-              title="T-Mobile Product Purchase Automation"
-              projectType="UI automation testing"
+              title={t("T-mobile_title")}
+              projectType={t("T-mobile_projectType")}
               link="https://github.com/MarekSwiechowicz/selenium-cucumber-test"
               image={TMobileImage}
             />
             <Project
               title="TMexpress"
-              projectType="Static nextjs site"
+              projectType={t("TMExpress_projectType")}
               link="https://github.com/MarekSwiechowicz/tmexpress"
               image={TMexpressImage}
             />
             <FeaturedProject
-              title="Portfolio Website"
-              summary="This portfolio website was created using Next.js, Tailwind CSS, and TypeScript. It is hosted on Vercel."
+              title={t("portfolio_title")}
+              projectType={t("portfolio_projectType")}
+              summary={t("portfolio_summary")}
               link="https://github.com/MarekSwiechowicz/MyWebsite"
               image={PortfolioSite}
             />

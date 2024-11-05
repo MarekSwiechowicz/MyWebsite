@@ -50,5 +50,11 @@
   "CKEditor_title": "REST API and CKEditor 5 Real-Time Collaboration Showcase",
   "CKEditor_summary": "This project demonstrates my expertise in configuring and testing REST APIs, with a focus on real-time collaboration features. It includes several projects and tasks, each addressing specific aspects of API integration and testing.",
   "CKEditor_projectType": "Featured Project",
-  "T-mobile_summary": "This project demonstrates automated testing of the T-Mobile website's product purchase flow using Selenium WebDriver with Java and Cucumber."
+  "T-mobile_projectType": "UI automation testing",
+  "T-mobile_title": "T-Mobile Product Purchase Automation",
+  "T-mobile_summary": "This project demonstrates automated testing of the T-Mobile website's product purchase flow using Selenium WebDriver with Java and Cucumber.",
+  "TMExpress_projectType": "Static nextjs site",
+  "portfolio_title": "My website",
+  "portfolio_projectType": "portfolio",
+  "portfolio_summary": "This portfolio website was created using Next.js, Tailwind CSS, and TypeScript."
 }
