@@ -44,11 +44,11 @@ export const Skills = () => {
         >
           Testing
         </motion.div>
-        <Skill name="SQL" x="-18vw" y="2vw"></Skill>
+        <Skill name="Postman" x="-18vw" y="2vw"></Skill>
         <Skill name="Python" x="-8vw" y="-10vw"></Skill>
         <Skill name="JavaScript" x="21vw" y="6vw"></Skill>
         <Skill name="CI/CD" x="0vw" y="11vw"></Skill>
-        <Skill name="Postman" x="-20vw" y="-9vw"></Skill>
+        <Skill name="SQL" x="-20vw" y="-9vw"></Skill>
         <Skill name="Playwright" x="23vw" y="-5vw"></Skill>
         <Skill name="Jest" x="0vw" y="-19vw"></Skill>
         <Skill name="Selenium" x="10vw" y="-14vw"></Skill>
