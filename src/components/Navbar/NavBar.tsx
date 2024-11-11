@@ -40,11 +40,6 @@ const NavBar = () => {
     };
   }, [isOpen, closeOnOutsideClick]);
 
-  const Links = [
-    { href: "/", title: "home", className: "mr-4" },
-    { href: "/about", title: "about", className: "mx-4" },
-  ];
-
   return (
     <header
       className={twMerge(

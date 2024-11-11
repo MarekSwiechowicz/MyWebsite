@@ -12,7 +12,7 @@ import { TransitionEffect } from "@/components/TransitionEffect";
 import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
 import TMobileImage from "../../public/tmobile.png";
-import TMexpressImage from "../../public/tmexpress-1.png";
+import TMexpressImage from "../../public/tm.png";
 import PortfolioSite from "../../public/site.png";
 
 interface ProjectProps {
