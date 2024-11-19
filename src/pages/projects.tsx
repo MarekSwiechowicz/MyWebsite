@@ -52,14 +52,14 @@ const FeaturedProject: React.FC<ProjectProps> = ({
           <div className="flex mt-2 items-center">
             <Link
               href={link}
-              className="ml-4 rounded-lg bg-dark p-2 px-6 text-lg font-semibold text-light dark:bg-light dark:text-dark sm:px-4 sm:text-base"
+              className="mr-4 rounded-lg bg-dark p-2 px-6 text-lg font-semibold text-light dark:bg-light dark:text-dark sm:px-4 sm:text-base"
             >
               Visit Project
             </Link>
             <Image
               src={GithubIcon}
               alt="GitHub Icon"
-              className="w-10 h-10 bg-light dark:bg-dark rounded-full"
+              className="w-10 h-10 bg-light  rounded-full"
             />
           </div>
         </div>
@@ -95,14 +95,14 @@ const Project: React.FC<ProjectProps> = ({
           <div className="flex mt-2 items-center justify-between">
             <Link
               href={link}
-              className="text-lg font-semibold text-dark dark:bg-light dark:text-light sm:text-base underline"
+              className="text-lg font-semibold text-dark dark:bg-dark dark:text-light sm:text-base underline"
             >
               Visit
             </Link>
             <Image
               src={GithubIcon}
               alt="GitHub Icon"
-              className="w-8 h-8 bg-light dark:bg-dark rounded-full"
+              className="w-8 h-8 bg-light  rounded-full"
             />
           </div>
         </div>
