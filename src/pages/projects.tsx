@@ -12,7 +12,7 @@ import { TransitionEffect } from "@/components/TransitionEffect";
 import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
 import TMobileImage from "../../public/tmobile.png";
-import TMexpressImage from "../../public/tmexpress-1.png";
+import TMexpressImage from "../../public/tm.png";
 import PortfolioSite from "../../public/site.png";
 
 interface ProjectProps {
@@ -35,7 +35,11 @@ const FeaturedProject: React.FC<ProjectProps> = ({
       <div className="absolute top-1 -right-3 -z-10 w-[100%] h-[102%] rounded-3xl bg-dark dark:bg-light" />
       <div className="flex flex-col lg:flex-row items-center">
         <Link className="w-full h-auto rounded-2xl lg:w-1/2" href={link}>
-          <Image src={image} alt="alt" className="" />
+          <Image
+            src={image}
+            alt={`${title} project image`}
+            className="rounded-2xl"
+          />
         </Link>
         <div className="flex-col lg:w-1/2 lg:pl-6">
           <h1 className="text-base lg:text-xl font-medium text-primary dark:text-primaryDark xs:text-base pt-6">
@@ -45,19 +49,19 @@ const FeaturedProject: React.FC<ProjectProps> = ({
             {title}
           </p>
           <p className="text-sm">{summary}</p>
-          <Link className="flex mt-2" href={link}>
-            <Image
-              src={GithubIcon}
-              alt="GitHub Icon"
-              className="w-10 h-10 bg-light dark:bg-dark rounded-full"
-            />
+          <div className="flex mt-2 items-center">
             <Link
               href={link}
-              className="ml-4 rounded-lg bg-dark p-2 px-6 text-lg font-semibold text-light dark:bg-light dark:text-dark sm:px-4 sm:text-base"
+              className="mr-4 rounded-lg bg-dark p-2 px-6 text-lg font-semibold text-light dark:bg-light dark:text-dark sm:px-4 sm:text-base"
             >
               Visit Project
             </Link>
-          </Link>
+            <Image
+              src={GithubIcon}
+              alt="GitHub Icon"
+              className="w-10 h-10 bg-light  rounded-full"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -74,8 +78,12 @@ const Project: React.FC<ProjectProps> = ({
     <section className="col-span-12 md:col-span-6 p-4 md:p-6 relative h-max rounded-2xl border-2 border-solid border-dark bg-light dark:bg-dark dark:border-light">
       <div className="absolute top-1 -right-3 -z-10 w-[100%] h-[102%] rounded-3xl bg-dark dark:bg-light" />
       <div className="flex flex-col">
-        <Link className=" rounded-2xl" href={link}>
-          <Image src={image} alt="alt" className=" rounded-2xl" />
+        <Link className="rounded-2xl" href={link}>
+          <Image
+            src={image}
+            alt={`${title} project image`}
+            className="rounded-2xl"
+          />
         </Link>
         <div className="flex-col pt-6">
           <h1 className="text-base lg:text-xl font-medium text-primary dark:text-primaryDark xs:text-base">
@@ -84,19 +92,19 @@ const Project: React.FC<ProjectProps> = ({
           <p className="my-2 w-full text-left text-2xl lg:text-3xl xl:text-4xl font-bold">
             {title}
           </p>
-          <Link className="flex mt-2 items-center justify-between" href={link}>
+          <div className="flex mt-2 items-center justify-between">
             <Link
               href={link}
-              className=" text-lg font-semibold text-dark dark:bg-light dark:text-light sm:text-base underline"
+              className="text-lg font-semibold text-dark dark:bg-dark dark:text-light sm:text-base underline"
             >
               Visit
             </Link>
             <Image
               src={GithubIcon}
               alt="GitHub Icon"
-              className="w-8 h-8 bg-light dark:bg-dark rounded-full"
+              className="w-8 h-8 bg-light  rounded-full"
             />
-          </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -135,8 +143,8 @@ const Projects: React.FC = () => {
             />
             <Project
               title="TMexpress"
-              projectType={t("TMExpress_projectType")}
-              link="https://github.com/MarekSwiechowicz/tmexpress"
+              projectType="Static nextjs site"
+              link="https://www.tmexpress.pl/"
               image={TMexpressImage}
             />
             <FeaturedProject
