@@ -71,15 +71,6 @@ export const Experience = () => {
       address: "3MK Protection",
     },
     {
-      position: "Quality Assurance",
-      company: "UBIQUITY SERVICE ",
-      time: "2024",
-      companyLink:
-        "https://www.linkedin.com/company/ubiquity-service-sp%C3%B3%C5%82ka-z-ograniczon%C4%85-odpowiedzialno%C5%9Bci%C4%85/mycompany/",
-      workDescriptionKey: "workDescriptionUBIQUITYSERVICE",
-      address: "UBIQUITY SERVICE",
-    },
-    {
       position: "Test Engineer",
       company: "ThunderSoft",
       time: "2023-2024",
@@ -88,34 +79,9 @@ export const Experience = () => {
       address: "ThunderSoft",
     },
     {
-      position: "Frontend Developer",
-      company: "VisualSoft",
-      time: "2022-2023",
-      companyLink: "https://visualsoft.com.pl/",
-      workDescriptionKey: "workDescriptionVisualSoft",
-      address: "VisualSoft",
-    },
-    {
-      position: "Frontend Developer",
-      company: "RabeSoft",
-      time: "2022",
-      companyLink:
-        "https://www.linkedin.com/in/%C5%82ukasz-szumowski-39827378/?locale=en_US",
-      workDescriptionKey: "workDescriptionRabeSoft",
-      address: "RabeSoft",
-    },
-    {
-      position: "Full-Stack Engineer",
-      company: "Eternis",
-      time: "2022",
-      companyLink: "https://eternis.pl/",
-      workDescriptionKey: "workDescriptionEternis",
-      address: "Eternis",
-    },
-    {
       position: "Software Engineer",
       company: "Geeknauts",
-      time: "2022-2023",
+      time: "2021-2022",
       companyLink: "https://geeknauts.com/pl/",
       workDescriptionKey: "workDescriptionGeeknauts",
       address: "Geeknauts",
