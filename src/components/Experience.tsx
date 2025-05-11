@@ -63,9 +63,17 @@ export const Experience = () => {
 
   const workExperiences = [
     {
+      position: "Quality Engineer",
+      company: "SiriusXM",
+      time: "2025 - present",
+      companyLink: "https://www.siriusxm.com/",
+      workDescriptionKey: "workDescriptionSiriusXM",
+      address: "SiriusXM",
+    },
+    {
       position: "Quality Assurance",
       company: "3MK Protection ",
-      time: "2024",
+      time: "2024 - present",
       companyLink: "https://3mk.pl/",
       workDescriptionKey: "workDescription3MK",
       address: "3MK Protection",
