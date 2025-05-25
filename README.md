@@ -79,8 +79,8 @@ This project is configured for deployment on Vercel. The deployment process is a
 
 ## 📝 License
 
-[Your chosen license]
+MIT
 
 ## 👤 Author
 
-[Your Name]
+Marek Święchowicz
