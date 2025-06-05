@@ -63,7 +63,7 @@ export const Experience = () => {
 
   const workExperiences = [
     {
-      position: "Quality Engineer",
+      position: "Software Engineer III",
       company: "SiriusXM",
       time: "2025 - present",
       companyLink: "https://www.siriusxm.com/",
@@ -81,7 +81,7 @@ export const Experience = () => {
     {
       position: "Test Engineer",
       company: "ThunderSoft",
-      time: "2023-2024",
+      time: "2022-2024",
       companyLink: "https://www.thundersoft.com/",
       workDescriptionKey: "workDescriptionThunderSoft",
       address: "ThunderSoft",
@@ -89,7 +89,7 @@ export const Experience = () => {
     {
       position: "Software Engineer",
       company: "Geeknauts",
-      time: "2021-2022",
+      time: "2020-2022",
       companyLink: "https://geeknauts.com/pl/",
       workDescriptionKey: "workDescriptionGeeknauts",
       address: "Geeknauts",
