@@ -83,18 +83,10 @@ const About = () => {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
-            <div className="order-3 sm:col-span-2 xl:col-span-2 xl:flex xl:flex-col grid grid-cols-3 justify-between">
-              <div className="flex flex-col xl:items-end justify-center items-center">
-                <span className=" inline-block text-4xl md:text-7xl font-bold">
-                  <AnimatedNumbers value={10}></AnimatedNumbers>+
-                </span>
-                <h2 className=" text-xxs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75">
-                  {t("satisfied_clients_heading")}
-                </h2>
-              </div>
+            <div className="order-3 sm:col-span-2 xl:col-span-2 xl:flex xl:flex-col xl:justify-center xl:gap-24 grid grid-cols-2 justify-between">
               <div className=" flex flex-col xl:items-end justify-center items-center">
                 <span className=" inline-block text-4xl md:text-7xl font-bold">
-                  <AnimatedNumbers value={20}></AnimatedNumbers>+
+                  <AnimatedNumbers value={10}></AnimatedNumbers>+
                 </span>
                 <h2 className=" text-xxs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75">
                   {t("projects_completed_heading")}
