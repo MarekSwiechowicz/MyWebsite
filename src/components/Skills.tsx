@@ -46,7 +46,7 @@ export const Skills = () => {
         </motion.div>
         <Skill name="Postman" x="-18vw" y="2vw"></Skill>
         <Skill name="Python" x="-8vw" y="-10vw"></Skill>
-        <Skill name="JavaScript" x="21vw" y="6vw"></Skill>
+        <Skill name="TypeScript" x="21vw" y="6vw"></Skill>
         <Skill name="CI/CD" x="0vw" y="11vw"></Skill>
         <Skill name="SQL" x="-20vw" y="-9vw"></Skill>
         <Skill name="Playwright" x="23vw" y="-5vw"></Skill>
