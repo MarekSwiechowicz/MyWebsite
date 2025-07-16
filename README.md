@@ -24,8 +24,6 @@ A modern, responsive portfolio website built with Next.js, featuring smooth anim
 - **Testing:** Playwright
 - **Linting:** ESLint
 
-> **Note:** Next.js version 13.2.4 is specifically required for Framer Motion compatibility.
-
 ## 📦 Installation
 
 1. Clone the repository:
