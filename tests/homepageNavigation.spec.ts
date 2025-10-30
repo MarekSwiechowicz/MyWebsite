@@ -1,27 +1,29 @@
 import { test, expect } from "@playwright/test";
+import { HomePage } from "./page-objects/HomePage";
 
-test("homepage has title Marek Święchowicz", async ({ page }) => {
-  await page.goto("/");
+// First test: title verification
+
+test("@smoke homepage has title Marek Święchowicz", async ({ page }) => {
+  const homePage = new HomePage(page);
+  await homePage.goto();
   await expect(page).toHaveTitle("Marek Święchowicz");
 });
 
-test("can navigate to about page", async ({ page }) => {
-  await page.goto("/");
-  await page.click("text=About");
+test("@smoke can navigate to about page", async ({ page }) => {
+  const homePage = new HomePage(page);
+  await homePage.goto();
+  await homePage.clickAbout();
   await expect(page).toHaveURL("/about");
 });
 
 test("test", async ({ page }) => {
+  const homePage = new HomePage(page);
   await page.goto("http://localhost:3000/");
-  const page1Promise = page.waitForEvent("popup");
-  await page.getByLabel("Marek's GitHub").click();
-  const page1 = await page1Promise;
-  const page2Promise = page.waitForEvent("popup");
-  await page.getByLabel("Marek's LinkedIn").click();
-  const page2 = await page2Promise;
-  await page.getByRole("button").first().click();
-  await page.getByRole("button").first().click();
-  await page.getByRole("button", { name: "PL" }).click();
-  await page.getByRole("button", { name: "EN" }).click();
-  await page.getByRole("link", { name: "About" }).click();
+  const page1 = await homePage.clickGitHub();
+  const page2 = await homePage.clickLinkedIn();
+  await homePage.clickFirstButton();
+  await homePage.clickFirstButton();
+  await homePage.changeLanguage("PL");
+  await homePage.changeLanguage("EN");
+  await homePage.clickAbout();
 });
