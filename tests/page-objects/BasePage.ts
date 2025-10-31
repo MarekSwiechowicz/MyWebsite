@@ -29,7 +29,10 @@ export class BasePage {
     await this.page.getByRole("button").first().click();
   }
 
+  // Quick fix to avoid strict mode violation in CI:
   async changeLanguage(language: "PL" | "EN") {
-    await this.page.getByRole("button", { name: language }).click();
+    await this.page.getByRole("button", { name: language }).first().click();
+
+    // Recommended long-term alternative (after adding data-testid to the app):
   }
 }
