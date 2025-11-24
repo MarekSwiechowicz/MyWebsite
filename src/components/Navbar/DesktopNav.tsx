@@ -61,7 +61,7 @@ const DesktopNav: React.FC = () => {
           label="Marek's GitHub"
         />
         <SocialMotionLink
-          href="https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/"
+          href="https://www.linkedin.com/in/marekswiechowicz/"
           icon={LinkedinIcon}
           label="Marek's LinkedIn"
         />
