@@ -16,7 +16,7 @@ export class BasePage {
   }
 
   async clickLinkByText(text: string) {
-    await this.page.click(`text=${text}`);
+    await this.page.getByText(text).click();
   }
 
   async openExternalLinkByLabel(label: string) {

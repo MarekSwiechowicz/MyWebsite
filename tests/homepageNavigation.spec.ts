@@ -16,7 +16,9 @@ test("@smoke can navigate to about page", async ({ page }) => {
   await expect(page).toHaveURL("/about");
 });
 
-test("test", async ({ page }) => {
+test("can interact with social links and language switcher", async ({
+  page,
+}) => {
   const homePage = new HomePage(page);
   await page.goto("http://localhost:3000/");
   const page1 = await homePage.clickGitHub();
