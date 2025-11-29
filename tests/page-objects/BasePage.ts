@@ -7,12 +7,8 @@ export class BasePage {
     this.page = page;
   }
 
-  async gotoPath(path: string) {
+  async goto(path: string) {
     await this.page.goto(path);
-  }
-
-  async getTitle() {
-    return this.page.title();
   }
 
   async clickLinkByText(text: string) {
@@ -29,10 +25,7 @@ export class BasePage {
     await this.page.getByRole("button").first().click();
   }
 
-  // Quick fix to avoid strict mode violation in CI:
   async changeLanguage(language: "PL" | "EN") {
     await this.page.getByRole("button", { name: language }).first().click();
-
-    // Recommended long-term alternative (after adding data-testid to the app):
   }
 }
