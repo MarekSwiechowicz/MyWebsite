@@ -1,5 +1,5 @@
-import { Page } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { Page } from "@playwright/test";
+import { BasePage } from "./BasePage";
 
 export class ProjectsPage extends BasePage {
   constructor(page: Page) {
@@ -7,6 +7,6 @@ export class ProjectsPage extends BasePage {
   }
 
   async goto() {
-    await this.gotoPath('/projects');
+    await this.gotoPath("/projects");
   }
 }
