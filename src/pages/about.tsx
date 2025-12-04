@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import Head from "next/head";
