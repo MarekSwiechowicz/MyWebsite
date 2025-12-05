@@ -53,5 +53,7 @@
   "TMExpress_projectType": "Statyczna strona internetowa",
   "portfolio_title": "Moja strona internetowa",
   "portfolio_projectType": "Portfolio",
-  "portfolio_summary": "Ta strona portfolio została stworzona przy użyciu Next.js, Tailwind CSS i TypeScript"
+  "portfolio_summary": "Ta strona portfolio została stworzona przy użyciu Next.js, Tailwind CSS i TypeScript",
+  "open_menu": "Otwórz menu",
+  "close_menu": "Zamknij menu"
 }

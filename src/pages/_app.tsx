@@ -10,6 +10,8 @@ import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import FacebookMsg from "@/components/FacebookMsg";
 import { Analytics } from "@vercel/analytics/react";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import SkipToContent from "@/components/SkipToContent";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,17 +30,21 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/ms.svg"></link>
       </Head>
       <main
+        id="main-content"
         className={`bg-light w-full min-h-screen dark:bg-dark
        ${montserrat.variable} font-montserrat`}
       >
         <ThemeProvider attribute="class">
-          <NavBar></NavBar>
-          <AnimatePresence mode="wait">
-            <Component key={router.asPath} {...pageProps} />
-          </AnimatePresence>
-          <FacebookMsg></FacebookMsg>
-          <Footer></Footer>
-          <Analytics />
+          <ErrorBoundary>
+            <SkipToContent />
+            <NavBar></NavBar>
+            <AnimatePresence mode="wait">
+              <Component key={router.asPath} {...pageProps} />
+            </AnimatePresence>
+            <FacebookMsg></FacebookMsg>
+            <Footer></Footer>
+            <Analytics />
+          </ErrorBoundary>
         </ThemeProvider>
       </main>
     </>

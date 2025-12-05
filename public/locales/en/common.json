@@ -52,5 +52,7 @@
   "TMExpress_projectType": "Static nextjs site",
   "portfolio_title": "My website",
   "portfolio_projectType": "portfolio",
-  "portfolio_summary": "This portfolio website was created using Next.js, Tailwind CSS, and TypeScript."
+  "portfolio_summary": "This portfolio website was created using Next.js, Tailwind CSS, and TypeScript.",
+  "open_menu": "Open menu",
+  "close_menu": "Close menu"
 }

@@ -8,6 +8,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image, { StaticImageData } from "next/image";
 import { TransitionEffect } from "@/components/TransitionEffect";
+import SEO from "@/components/SEO";
 
 import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
@@ -58,7 +59,7 @@ const FeaturedProject: React.FC<ProjectProps> = ({
             </Link>
             <Image
               src={GithubIcon}
-              alt="GitHub Icon"
+              alt={`${title} - GitHub repository`}
               className="w-10 h-10 bg-light  rounded-full"
             />
           </div>
@@ -101,7 +102,7 @@ const Project: React.FC<ProjectProps> = ({
             </Link>
             <Image
               src={GithubIcon}
-              alt="GitHub Icon"
+              alt={`${title} - GitHub repository`}
               className="w-8 h-8 bg-light  rounded-full"
             />
           </div>
@@ -116,10 +117,10 @@ const Projects: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>{t("page_title", "Projects")}</title>
-        <meta name="description" content={t("about_me_content")}></meta>
-      </Head>
+      <SEO
+        title={`${t("projects", "Projects")} - Marek Święchowicz`}
+        description={`${t("projects_header", "Imagination Trumps Knowledge!")} - ${t("page_description", "Discover the projects, portfolio, and professional background of Marek Święchowicz.")}`}
+      />
       <TransitionEffect />
       <main className="flex items-center text-dark w-full dark:text-light">
         <Layout>

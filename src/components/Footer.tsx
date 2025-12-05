@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "./Layout";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import { CONTACT_EMAIL } from "@/constants/config";
 
 export const Footer = () => {
   const { t } = useTranslation("common");
@@ -24,8 +25,7 @@ export const Footer = () => {
           <span className="underline">{t("Marka")}</span>
         </div>
         <Link
-          href="mailto:marek.swiechowicz.linkedin@gmail.com"
-          target={"_blank"}
+          href={`mailto:${CONTACT_EMAIL}`}
           className=" underline underline-offset-2"
         >
           {t("sayHello")}

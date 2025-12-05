@@ -12,6 +12,7 @@ import { TransitionEffect } from "@/components/TransitionEffect";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import SEO from "@/components/SEO";
 
 interface AnimatedNumbersProps {
   value: number;
@@ -48,10 +49,10 @@ const About = () => {
 
   return (
     <>
-      <Head>
-        <title>{t("page_title", "About")}</title>
-        <meta name="description" content={t("about_me_content")}></meta>
-      </Head>
+      <SEO
+        title={`${t("page_title", "About")} - Marek Święchowicz`}
+        description={t("about_me_content")}
+      />
       <TransitionEffect />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="">
