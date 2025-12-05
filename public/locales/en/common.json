@@ -56,6 +56,9 @@
   "saucedemo_title": "SauceDemo Login Form Automation",
   "saucedemo_projectType": "WebDriverIO automation testing",
   "saucedemo_summary": "Automated testing framework for SauceDemo login form validation using WebDriverIO with Page Object pattern. Tests cover empty credentials, partial inputs, and successful login scenarios across Chrome and Firefox browsers with parallel execution and data-driven testing.",
+  "ewanani_title": "EwaNani",
+  "ewanani_projectType": "AI experiment - website creation attempt",
+  "ewanani_summary": "An experimental project exploring the use of AI tools to create a website. This was an attempt to leverage artificial intelligence for web development, testing the capabilities and limitations of AI-assisted coding.",
   "open_menu": "Open menu",
   "close_menu": "Close menu"
 }

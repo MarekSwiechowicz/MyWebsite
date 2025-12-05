@@ -16,6 +16,7 @@ import TMobileImage from "../../public/tmobile.png";
 import TMexpressImage from "../../public/tm.png";
 import SaucedemoImage from "../../public/saucedemo.png";
 import PortfolioSite from "../../public/site.png";
+import NaniImage from "../../public/nani.png";
 
 interface ProjectProps {
   title: string;
@@ -154,6 +155,12 @@ const Projects: React.FC = () => {
               projectType={t("saucedemo_projectType")}
               link="https://github.com/MarekSwiechowicz/saucedemo"
               image={SaucedemoImage}
+            />
+            <Project
+              title={t("ewanani_title")}
+              projectType={t("ewanani_projectType")}
+              link="https://github.com/MarekSwiechowicz/EwaNani/tree/test"
+              image={NaniImage}
             />
             <FeaturedProject
               title={t("portfolio_title")}

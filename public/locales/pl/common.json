@@ -57,6 +57,9 @@
   "saucedemo_title": "Automatyzacja formularza logowania SauceDemo",
   "saucedemo_projectType": "Testowanie automatyczne WebDriverIO",
   "saucedemo_summary": "Framework testów automatycznych dla walidacji formularza logowania SauceDemo wykorzystujący WebDriverIO z wzorcem Page Object. Testy obejmują puste dane, częściowe dane wejściowe i scenariusze pomyślnego logowania w przeglądarkach Chrome i Firefox z równoległym wykonaniem i testowaniem opartym na danych.",
+  "ewanani_title": "EwaNani",
+  "ewanani_projectType": "Eksperyment z AI - próba stworzenia strony internetowej",
+  "ewanani_summary": "Eksperymentalny projekt badający wykorzystanie narzędzi AI do tworzenia strony internetowej. Była to próba wykorzystania sztucznej inteligencji w tworzeniu stron, testująca możliwości i ograniczenia kodowania wspomaganego przez AI.",
   "open_menu": "Otwórz menu",
   "close_menu": "Zamknij menu"
 }
