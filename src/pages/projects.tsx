@@ -14,6 +14,7 @@ import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
 import TMobileImage from "../../public/tmobile.png";
 import TMexpressImage from "../../public/tm.png";
+import SaucedemoImage from "../../public/saucedemo.png";
 import PortfolioSite from "../../public/site.png";
 
 interface ProjectProps {
@@ -147,6 +148,12 @@ const Projects: React.FC = () => {
               projectType="Static nextjs site"
               link="https://www.tmexpress.pl/"
               image={TMexpressImage}
+            />
+            <Project
+              title={t("saucedemo_title")}
+              projectType={t("saucedemo_projectType")}
+              link="https://github.com/MarekSwiechowicz/saucedemo"
+              image={SaucedemoImage}
             />
             <FeaturedProject
               title={t("portfolio_title")}

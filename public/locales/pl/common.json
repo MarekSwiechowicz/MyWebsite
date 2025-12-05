@@ -54,6 +54,9 @@
   "portfolio_title": "Moja strona internetowa",
   "portfolio_projectType": "Portfolio",
   "portfolio_summary": "Ta strona portfolio została stworzona przy użyciu Next.js, Tailwind CSS i TypeScript",
+  "saucedemo_title": "Automatyzacja formularza logowania SauceDemo",
+  "saucedemo_projectType": "Testowanie automatyczne WebDriverIO",
+  "saucedemo_summary": "Framework testów automatycznych dla walidacji formularza logowania SauceDemo wykorzystujący WebDriverIO z wzorcem Page Object. Testy obejmują puste dane, częściowe dane wejściowe i scenariusze pomyślnego logowania w przeglądarkach Chrome i Firefox z równoległym wykonaniem i testowaniem opartym na danych.",
   "open_menu": "Otwórz menu",
   "close_menu": "Zamknij menu"
 }
