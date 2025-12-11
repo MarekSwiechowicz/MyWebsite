@@ -10,16 +10,20 @@ import { TransitionEffect } from "@/components/TransitionEffect";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next";
+import SEO from "@/components/SEO";
+import StructuredData from "@/components/StructuredData";
+import { CONTACT_EMAIL } from "@/constants/config";
 
 export default function Home() {
   const { t } = useTranslation("common");
 
   return (
     <>
-      <Head>
-        <title>{t("page_title", "Marek Święchowicz")}</title>
-        <meta name="description" content="Explore my website."></meta>
-      </Head>
+      <SEO
+        title={t("page_title", "Marek Święchowicz")}
+        description={t("page_description", "Discover the projects, portfolio, and professional background of Marek Święchowicz.")}
+      />
+      <StructuredData type="Person" />
       <TransitionEffect></TransitionEffect>
       <main className="flex min-h-screen items-center text-dark w-full  dark:text-light">
         <Layout className="pt-16 md:!pt-0 sm:pt-8">
@@ -54,7 +58,7 @@ export default function Home() {
 
                 <Link
                   className="ml-4 text-base md:text-lg font-medium capitalize text-dark  underline dark:text-light"
-                  href="mailto:marek.swiechowicz.linkedin@gmail.com"
+                  href={`mailto:${CONTACT_EMAIL}`}
                 >
                   {t("contact_link")}
                 </Link>

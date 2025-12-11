@@ -11,7 +11,7 @@ test.describe("Homepage UI", () => {
 
     // Check main content - description text is more reliable than animated text
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
 
     // Check buttons and links
@@ -216,7 +216,7 @@ test.describe("Language Switcher UI", () => {
 
     // Verify initial English content is visible (description text)
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
 
     // Switch to Polish
@@ -229,7 +229,7 @@ test.describe("Language Switcher UI", () => {
 
     // Verify we're back to English
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
   });
 });
@@ -269,7 +269,7 @@ test.describe("Responsive Design", () => {
 
     // Main content should still be visible
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
 
     // Mobile menu button should be visible
@@ -283,7 +283,7 @@ test.describe("Responsive Design", () => {
 
     // Content should be visible
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
   });
 
@@ -294,7 +294,7 @@ test.describe("Responsive Design", () => {
 
     // All elements should be visible
     await expect(
-      page.getByText(/Once an experienced web developer/i)
+      page.getByText(/With a background in full-stack development/i)
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /Resume/i })).toBeVisible();
   });

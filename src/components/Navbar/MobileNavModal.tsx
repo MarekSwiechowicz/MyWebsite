@@ -49,7 +49,9 @@ export const MobileNavModal: React.FC<MobileNavModalProps> = ({
           className="w-6 mx-3 bg-light dark:bg-dark rounded-full sm:mx-1"
           whileTap={{ scale: 0.9 }}
           href="https://github.com/MarekSwiechowicz"
-          target={"blank"}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("github", "Marek's GitHub")}
         >
           <GithubIcon />
         </motion.a>
@@ -58,7 +60,9 @@ export const MobileNavModal: React.FC<MobileNavModalProps> = ({
           className="w-6 mx-3 sm:mx-1"
           whileTap={{ scale: 0.9 }}
           href="https://www.linkedin.com/in/marek%C5%9Bwi%C4%99chowicz/"
-          target={"blank"}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("linkedin", "Marek's LinkedIn")}
         >
           <LinkedinIcon />
         </motion.a>

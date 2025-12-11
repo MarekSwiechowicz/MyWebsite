@@ -50,6 +50,9 @@ const NavBar = () => {
         id="buttonId"
         className="flex lg:hidden flex-col justify-center items-center"
         onClick={handleClick}
+        aria-label={isOpen ? t("close_menu", "Close menu") : t("open_menu", "Open menu")}
+        aria-expanded={isOpen}
+        aria-controls="modalId"
       >
         <span
           className={`bg-dark dark:bg-light transition-all duration-300 ease-out block h-0.5 w-6 rounded-sm ${

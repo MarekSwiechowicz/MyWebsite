@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import Head from "next/head";
@@ -13,6 +12,7 @@ import { TransitionEffect } from "@/components/TransitionEffect";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import SEO from "@/components/SEO";
 
 interface AnimatedNumbersProps {
   value: number;
@@ -45,13 +45,14 @@ const AnimatedNumbers: React.FC<AnimatedNumbersProps> = ({ value }) => {
 
 const About = () => {
   const { t } = useTranslation("common");
+  const yearsOfExperience = new Date().getFullYear() - 2020;
 
   return (
     <>
-      <Head>
-        <title>{t("page_title", "About")}</title>
-        <meta name="description" content={t("about_me_content")}></meta>
-      </Head>
+      <SEO
+        title={`${t("page_title", "About")} - Marek Święchowicz`}
+        description={t("about_me_content")}
+      />
       <TransitionEffect />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="">
@@ -94,7 +95,7 @@ const About = () => {
               </div>
               <div className=" flex flex-col xl:items-end justify-center items-center">
                 <span className=" inline-block text-4xl md:text-7xl font-bold">
-                  <AnimatedNumbers value={5}></AnimatedNumbers>+
+                  <AnimatedNumbers value={yearsOfExperience}></AnimatedNumbers>+
                 </span>
                 <h2 className=" text-xxs sm:text-xl font-medium capitalize text-dark/75 dark:text-light/75">
                   {t("years_of_experience_heading")}

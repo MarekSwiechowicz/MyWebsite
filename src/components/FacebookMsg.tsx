@@ -1,12 +1,11 @@
 "use client";
 import { FacebookProvider, CustomChat } from "react-facebook";
+import { FACEBOOK_CONFIG } from "@/constants/config";
 
 export default function FacebookMsg() {
-  const minimized = true;
-
   return (
-    <FacebookProvider appId="367844942889515" chatSupport>
-      <CustomChat pageId="508564492876108" minimized={"false" as any} />
+    <FacebookProvider appId={FACEBOOK_CONFIG.APP_ID} chatSupport>
+      <CustomChat pageId={FACEBOOK_CONFIG.PAGE_ID} />
     </FacebookProvider>
   );
 }

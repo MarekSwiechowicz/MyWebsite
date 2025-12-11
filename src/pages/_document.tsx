@@ -1,9 +1,9 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import Script from "next/script";
 
-export default function Document() {
+export default function Document({ locale }: { locale?: string }) {
   return (
-    <Html lang="en">
+    <Html lang={locale || "en"}>
       <Head />
       <body>
         <Script
@@ -20,3 +20,11 @@ export default function Document() {
     </Html>
   );
 }
+
+Document.getInitialProps = async (ctx: DocumentContext) => {
+  const initialProps = await ctx.defaultGetInitialProps(ctx);
+  return {
+    ...initialProps,
+    locale: ctx.locale || "en",
+  };
+};
