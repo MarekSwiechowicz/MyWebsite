@@ -6,7 +6,7 @@ interface StructuredDataProps {
 
 const StructuredData: React.FC<StructuredDataProps> = ({ type = "Person" }) => {
   const router = useRouter();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.marekswiechowicz.website";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.marekswiechowicz.pl";
   const locale = router.locale || "en";
 
   const personSchema = {

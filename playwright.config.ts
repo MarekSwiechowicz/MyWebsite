@@ -1,7 +1,7 @@
 import { defineConfig } from "@playwright/test";
 
 const PROD_BASE_URL =
-  process.env.PROD_BASE_URL || "https://www.marekswiechowicz.website/";
+  process.env.PROD_BASE_URL || "https://www.marekswiechowicz.pl/";
 
 export default defineConfig({
   testDir: "./tests",
