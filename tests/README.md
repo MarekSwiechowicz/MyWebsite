@@ -15,8 +15,14 @@ tests/
 │   └── ProjectsPage.ts
 ├── utils/              # Test utilities and helpers
 │   └── test-helpers.ts
-├── homepageNavigation.spec.ts
-└── ui.spec.ts
+├── homepage.spec.ts           # Homepage tests (navigation, elements, social links)
+├── about-page.spec.ts         # About page tests (sections, skills, experience, education)
+├── projects-page.spec.ts      # Projects page tests (project cards, links)
+├── navigation.spec.ts         # Navigation tests (desktop nav, mobile menu)
+├── language-switcher.spec.ts  # Language switcher tests
+├── footer.spec.ts             # Footer tests
+├── responsive.spec.ts          # Responsive design tests
+└── fixtures-example.spec.ts      # Example file demonstrating fixture usage
 ```
 
 ## Page Object Model
@@ -112,7 +118,9 @@ npm run test:ui
 npm run test:headed
 
 # Run specific test file
-npx playwright test tests/homepageNavigation.spec.ts
+npx playwright test tests/homepage.spec.ts
+npx playwright test tests/about-page.spec.ts
+npx playwright test tests/projects-page.spec.ts
 
 # Run tests with specific project
 npx playwright test --project=chromium
@@ -130,17 +138,17 @@ Tests marked with `@smoke` are critical path tests that run against production:
 - Homepage title verification
 - Basic navigation
 
-### UI Tests
+### Test Files
 
-Comprehensive UI tests covering:
+Tests are organized by feature/component:
 
-- Homepage UI elements
-- About page sections
-- Projects page display
-- Navigation functionality
-- Language switching
-- Footer elements
-- Responsive design
+- **homepage.spec.ts** - Homepage navigation, elements, social links, smoke tests
+- **about-page.spec.ts** - About page sections, skills, experience, education
+- **projects-page.spec.ts** - Projects page display, project cards, links
+- **navigation.spec.ts** - Desktop navigation, mobile menu
+- **language-switcher.spec.ts** - Language switching functionality
+- **footer.spec.ts** - Footer elements and links
+- **responsive.spec.ts** - Responsive design across devices
 
 ## Best Practices
 
