@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "./page-objects/HomePage";
+import { AboutPage } from "./page-objects/AboutPage";
 
 test("@smoke homepage has title Marek Święchowicz", async ({ page }) => {
   const homePage = new HomePage(page);
