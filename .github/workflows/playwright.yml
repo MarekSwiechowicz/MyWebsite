@@ -13,6 +13,8 @@ jobs:
   tests:
     name: Full E2E (localhost)
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: github.event_name == 'push' || github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,11 +52,11 @@ jobs:
 
   prod-smoke:
     name: Prod Smoke (chromium)
-    needs: []
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    timeout-minutes: 15
+    if: github.event_name == 'schedule'
     env:
-      PROD_BASE_URL: ${{ secrets.PROD_BASE_URL }}
+      BASE_URL: ${{ secrets.PROD_BASE_URL || 'https://www.marekswiechowicz.pl/' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -72,7 +74,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run prod smoke tests
-        run: npx playwright test --project=prod-smoke
+        run: npx playwright test --project=prod-smoke --retries=1
 
       - name: Upload HTML report (smoke)
         if: always()
