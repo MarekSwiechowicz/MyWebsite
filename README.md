@@ -71,6 +71,23 @@ src/
 - ESLint for code quality
 - TypeScript for type safety
 
+## 🔄 Development Workflow
+
+1. Create a branch: `git checkout -b fix/analytics` (or `feature/new-section`)
+2. Make changes, commit, push: `git push -u origin fix/analytics`
+3. Open a Pull Request on GitHub
+4. Wait for CI (Playwright tests) to pass ✓
+5. Merge to main — only when checks are green
+
+This keeps `main` always deployable.
+
+**Enable branch protection** (one-time setup on GitHub):
+- Repo → **Settings** → **Branches** → **Add rule**
+- Branch name: `main`
+- ✓ Require a pull request before merging
+- ✓ Require status checks to pass → select "Full E2E (localhost)"
+- Save
+
 ## 🚀 Deployment
 
 This project is configured for deployment on Vercel. The deployment process is automated through Vercel's platform.

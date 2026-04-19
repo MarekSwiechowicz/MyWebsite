@@ -22,6 +22,7 @@
   "home": "Strona główna",
   "about": "O mnie",
   "projects": "Projekty",
+  "blog": "Artykuły",
   "github": "GitHub",
   "linkedin": "LinkedIn",
   "menuButton": "Menu",
@@ -61,5 +62,8 @@
   "ewanani_projectType": "Eksperyment z AI - próba stworzenia strony internetowej",
   "ewanani_summary": "Eksperymentalny projekt badający wykorzystanie narzędzi AI do tworzenia strony internetowej. Była to próba wykorzystania sztucznej inteligencji w tworzeniu stron, testująca możliwości i ograniczenia kodowania wspomaganego przez AI.",
   "open_menu": "Otwórz menu",
-  "close_menu": "Zamknij menu"
+  "close_menu": "Zamknij menu",
+  "blog_header": "Artykuły i notatki z mojej pracy",
+  "blog_intro": "Tutaj będę publikował wpisy o testowaniu, automatyzacji i codziennej pracy inżyniera jakości.",
+  "blog_empty_state": "Pierwsze artykuły pojawią się wkrótce."
 }

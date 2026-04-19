@@ -22,6 +22,7 @@
   "home": "Home",
   "about": "About",
   "projects": "Projects",
+  "blog": "Articles",
   "github": "GitHub",
   "linkedin": "LinkedIn",
   "skills": "Skills",
@@ -60,5 +61,8 @@
   "ewanani_projectType": "AI experiment - website creation attempt",
   "ewanani_summary": "An experimental project exploring the use of AI tools to create a website. This was an attempt to leverage artificial intelligence for web development, testing the capabilities and limitations of AI-assisted coding.",
   "open_menu": "Open menu",
-  "close_menu": "Close menu"
+  "close_menu": "Close menu",
+  "blog_header": "Articles and notes from my work",
+  "blog_intro": "I will publish posts here about testing, automation, and day-to-day quality engineering work.",
+  "blog_empty_state": "First articles are coming soon."
 }

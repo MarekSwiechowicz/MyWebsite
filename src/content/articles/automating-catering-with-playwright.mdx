@@ -1,0 +1,209 @@
+---
+title: "How I Used Playwright and API Reverse Engineering to Automate My Meal Planning"
+date: "2026-04-19"
+description: "I automated my catering menu selection using Playwright, browser session hijacking, and API reverse engineering — and added diet-aware scoring for ulcerative colitis."
+tags: ["Playwright", "API", "Automation", "Node.js", "Reverse Engineering"]
+---
+
+I order catering every week. Every week I manually log in, open each day, and swap meals one by one. It takes 20 minutes. Last Sunday I decided to never do it again.
+
+This is the story of how I automated it — and what I learned about how modern web apps actually work.
+
+## The Problem
+
+The catering panel at **panel.kuchniavikinga.pl** is a React SPA (Single Page Application). That means the HTML served by the server is basically empty:
+
+```html
+<body>
+  <div id="app"></div>
+</body>
+```
+
+Everything — the login form, the calendar, the meals — is rendered by JavaScript running in the browser. This immediately rules out simple tools like `curl` or basic HTTP fetchers. They'd just get an empty shell.
+
+## Step 1: Launching a Real Browser with Playwright
+
+Playwright is a Node.js library that controls a real Chromium browser programmatically — no window, just code.
+
+```javascript
+const { chromium } = require('playwright');
+
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+
+await page.goto('https://panel.kuchniavikinga.pl/', {
+  waitUntil: 'networkidle',
+  timeout: 30000
+});
+```
+
+With a real browser running, JavaScript executes, the app renders, and I can interact with it just like a human would — except in code.
+
+The login was straightforward once I handled the cookie consent banner that was blocking the submit button:
+
+```javascript
+// Accept cookies first — it was blocking the login button
+const cookieBtn = await page.$('text=Zezwól na wszystkie');
+if (cookieBtn) {
+  await cookieBtn.click();
+  await page.waitForTimeout(1000);
+}
+
+await page.fill('input[name="username"]', 'user@email.com');
+await page.fill('input[name="password"]', 'password');
+await page.click('button[type="submit"]');
+await page.waitForTimeout(6000); // wait for session to establish
+```
+
+## Step 2: Reverse Engineering the API
+
+Here's where it gets interesting. Once I was logged in, I didn't try to keep clicking through the UI. Instead, I intercepted all network requests the app was making:
+
+```javascript
+page.on('response', async (res) => {
+  const url = res.url();
+  if (url.includes('/api/')) {
+    console.log(res.url());
+  }
+});
+```
+
+When the page loaded, this printed ~40 API calls. The names were self-explanatory:
+
+```
+GET /api/company/customer/order/3003629
+GET /api/company/general/menus/delivery/40420693/new
+GET /api/company/customer/order/active-ids
+GET /api/company/customer/loyalty-program/points/sum
+```
+
+For the parts I couldn't see automatically — like what happens when you click "Change meal" — I went deeper. I downloaded the minified JavaScript bundle (2.5MB) and grepped it:
+
+```bash
+grep -o '/api/company/[a-z/]*' main.f4c6b44d.js | sort -u
+```
+
+This revealed URL patterns like:
+
+```
+/api/company/general/menus/delivery/${t}/new
+/api/company/customer/order/${e}/deliveries/${t}/delivery-meals/${n}/switch
+```
+
+The `${t}`, `${n}` placeholders meant these were dynamic — I just needed the right IDs.
+
+## Step 3: The Key Insight — fetch() Inside the Browser
+
+Here's the trick that made everything work. Instead of making HTTP requests from Node.js (which would fail without authentication), I made them **from inside the Playwright browser**:
+
+```javascript
+const menuData = await page.evaluate(async () => {
+  const res = await fetch('/api/company/general/menus/delivery/40420679/new');
+  return await res.json();
+});
+```
+
+`page.evaluate()` runs code inside Chromium. The browser already has the session cookies from logging in — so every `fetch()` call is fully authenticated. The server has no idea it's talking to a script.
+
+## Step 4: Getting All Meal Options
+
+Now that I could talk to the API, I retrieved the order data to find all delivery IDs:
+
+```javascript
+const order = await page.evaluate(async () => {
+  const res = await fetch('/api/company/customer/order/3003629');
+  return await res.json();
+});
+
+// Get deliveries from Saturday onwards
+const deliveries = order.deliveries
+  .filter(d => d.date >= '2026-04-25' && !d.deleted)
+  .sort((a, b) => a.date.localeCompare(b.date));
+```
+
+For each delivery day and each meal, I called the switch endpoint to get available alternatives:
+
+```javascript
+const switchData = await page.evaluate(async ({ deliveryId, deliveryMealId }) => {
+  const res = await fetch(
+    `/api/company/customer/order/3003629/deliveries/${deliveryId}/delivery-meals/${deliveryMealId}/switch`
+  );
+  return await res.json();
+}, { deliveryId: delivery.deliveryId, deliveryMealId: meal.deliveryMealId });
+
+const options = switchData.mealChangeOptions; // usually 2-3 options per meal
+```
+
+## Step 5: Diet-Aware Scoring for Ulcerative Colitis
+
+I have ulcerative colitis (UC) in remission. Generic "healthy eating" advice doesn't apply — I need high protein, low fat, low sugar, and I need to avoid certain foods even in remission.
+
+I wrote a scoring function:
+
+```javascript
+function scoreForUC(meal) {
+  const n = meal.nutrition;
+
+  // Base score: prioritize protein, penalize fat and sugar
+  let score = (n.protein * 3) - (n.fat * 2) - (n.sugar * 1.5);
+
+  const name = meal.menuMealName.toLowerCase();
+
+  // Anti-inflammatory fish gets a big bonus
+  if (name.includes('mintaj') || name.includes('łosoś') ||
+      name.includes('dorsz') || name.includes('tuńczyk')) score += 20;
+
+  // Lean poultry is good
+  if (name.includes('kurczak') || name.includes('indyk')) score += 5;
+
+  // Spicy foods irritate the gut lining
+  if (name.includes('curry') || name.includes('chili') ||
+      name.includes('pikant')) score -= 15;
+
+  // Tomato-based sauces can trigger flares
+  if (name.includes('sos pomidorowy')) score -= 10;
+
+  // Processed meats are a hard no
+  if (name.includes('boczek') || name.includes('pepperoni')) score -= 10;
+
+  return score;
+}
+```
+
+For each meal I picked the option with the highest score.
+
+## Step 6: Making the Changes
+
+Changing a meal turned out to be a single PUT request with a query parameter:
+
+```javascript
+const result = await page.evaluate(async ({ deliveryId, deliveryMealId, dietCaloriesMealId }) => {
+  const res = await fetch(
+    `/api/company/customer/order/3003629/deliveries/${deliveryId}/delivery-meals/${deliveryMealId}/switch?dietCaloriesMealId=${dietCaloriesMealId}`,
+    { method: 'PUT', headers: { 'Content-Type': 'application/json' } }
+  );
+  return { status: res.status };
+}, { deliveryId: c.deliveryId, deliveryMealId: c.deliveryMealId, dietCaloriesMealId: c.bestDietCaloriesMealId });
+```
+
+I ran this for all 15 delivery days — **22 changes in about 30 seconds**. Zero errors.
+
+## What I Learned
+
+**1. Modern web apps are two things: a UI shell and an API.**
+The React frontend is just a pretty wrapper. All actual data and business logic lives in the API. If you can talk to the API directly, you bypass the UI entirely.
+
+**2. Intercepting network traffic is the fastest way to understand an app.**
+I didn't need documentation. Watching what the browser actually sends and receives told me everything in minutes.
+
+**3. `page.evaluate()` is the bridge between automation and APIs.**
+Running `fetch()` inside Playwright means you get the browser's authenticated session for free — no token management, no cookie handling.
+
+**4. The hard part wasn't technical — it was the cookie banner.**
+Genuinely the most annoying part of the whole project.
+
+---
+
+The full script is about 80 lines of JavaScript. It runs headlessly, logs every change, and takes ~30 seconds for a full month of meal planning optimized for my medical condition.
+
+Not bad for a Sunday afternoon.

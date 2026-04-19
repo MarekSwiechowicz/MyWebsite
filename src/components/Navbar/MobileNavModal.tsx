@@ -21,6 +21,7 @@ export const MobileNavModal: React.FC<MobileNavModalProps> = ({
     { href: "/", title: "home" },
     { href: "/about", title: "about" },
     { href: "/projects", title: "projects" },
+    { href: "/blog", title: "blog" },
   ];
 
   if (!isOpen) return null;

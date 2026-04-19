@@ -39,6 +39,7 @@ const DesktopNav: React.FC = () => {
     { href: "/", title: "home", className: "mr-4" },
     { href: "/about", title: "about", className: "mx-4" },
     { href: "/projects", title: "projects", className: "mx-4" },
+    { href: "/blog", title: "blog", className: "mx-4" },
   ];
 
   return (
