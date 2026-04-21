@@ -1,13 +1,13 @@
 ---
 title: "Jak zautomatyzowałem wybór posiłków z cateringu przy użyciu Playwrighta i inżynierii wstecznej API"
 date: "2026-04-19"
-description: "Zautomatyzowałem wybór menu w cateringu dzięki Playwrightowi, „przejęciu” sesji przeglądarki i inżynierii wstecznej API — oraz dodałem punktację uwzględniającą dietę przy wrzodziej zapaleniu jelita grubego."
+description: "Zautomatyzowałem wybór menu w cateringu dzięki Playwrightowi, przejęciu sesji przeglądarki i inżynierii wstecznej API, z punktacją uwzględniającą dietę przy WZJG."
 tags: ["Playwright", "API", "Automatyzacja", "Node.js", "Inżynieria wsteczna"]
 ---
 
 Co tydzień zamawiam catering. Co tydzień ręcznie loguję się do panelu, otwieram każdy dzień i zamieniam posiłki jeden po drugim. Zajmuje to około 20 minut. W niedzielę postanowiłem, że nigdy więcej tego nie zrobię.
 
-To opowieść o tym, jak to zautomatyzowałem — i czego dowiedziałem się o tym, jak działają współczesne aplikacje webowe.
+To opowieść o tym, jak to zautomatyzowałem i czego dowiedziałem się o tym, jak działają współczesne aplikacje webowe.
 
 ## Problem
 
@@ -19,11 +19,11 @@ Panel cateringu na **panel.kuchniavikinga.pl** to React SPA (Single Page Applica
 </body>
 ```
 
-Wszystko — formularz logowania, kalendarz, posiłki — renderuje JavaScript w przeglądarce. To od razu wyklucza proste narzędzia w stylu `curl` czy podstawowe skrypty HTTP. Dostaną tylko pustą „powłokę”.
+Wszystko: formularz logowania, kalendarz, posiłki, renderuje JavaScript w przeglądarce. To od razu wyklucza proste narzędzia w stylu `curl` czy podstawowe skrypty HTTP. Dostaną tylko pustą powłokę.
 
 ## Krok 1: Uruchomienie prawdziwej przeglądarki z Playwrightem
 
-Playwright to biblioteka Node.js, która programowo steruje prawdziwą przeglądarką Chromium — bez okna, tylko kod.
+Playwright to biblioteka Node.js, która programowo steruje prawdziwą przeglądarką Chromium, bez okna, tylko kod.
 
 ```javascript
 const { chromium } = require('playwright');
@@ -37,12 +37,12 @@ await page.goto('https://panel.kuchniavikinga.pl/', {
 });
 ```
 
-Dzięki prawdziwej przeglądarce JavaScript się wykonuje, aplikacja się renderuje i mogę wchodzić w interakcję jak człowiek — tylko że w kodzie.
+Dzięki prawdziwej przeglądarce JavaScript się wykonuje, aplikacja się renderuje i mogę wchodzić w interakcję jak człowiek, tylko że w kodzie.
 
 Logowanie było proste, gdy tylko obsłużyłem baner zgody na pliki cookie, który blokował przycisk wysłania formularza:
 
 ```javascript
-// Najpierw akceptacja cookies — blokowała przycisk logowania
+// Najpierw akceptacja cookies, blokowała przycisk logowania
 const cookieBtn = await page.$('text=Zezwól na wszystkie');
 if (cookieBtn) {
   await cookieBtn.click();
@@ -77,7 +77,7 @@ GET /api/company/customer/order/active-ids
 GET /api/company/customer/loyalty-program/points/sum
 ```
 
-Tam, gdzie nie widziałem wszystkiego automatycznie — np. co dzieje po kliknięciu „Zmień posiłek” — poszedłem głębiej. Pobrałem zminifikowany bundle JavaScript (2,5 MB) i przeszukałem go:
+Tam, gdzie nie widziałem wszystkiego automatycznie, np. co dzieje się po kliknięciu "Zmień posiłek", poszedłem głębiej. Pobrałem zminifikowany bundle JavaScript (2,5 MB) i przeszukałem go:
 
 ```bash
 grep -o '/api/company/[a-z/]*' main.f4c6b44d.js | sort -u
@@ -90,11 +90,11 @@ Ujawniło to wzorce adresów URL, m.in.:
 /api/company/customer/order/${e}/deliveries/${t}/delivery-meals/${n}/switch
 ```
 
-Placeholdery `${t}`, `${n}` oznaczały, że ścieżki są dynamiczne — potrzebowałem tylko właściwych identyfikatorów.
+Placeholdery `${t}`, `${n}` oznaczały, że ścieżki są dynamiczne. Potrzebowałem tylko właściwych identyfikatorów.
 
-## Krok 3: Kluczowy wgląd — `fetch()` wewnątrz przeglądarki
+## Krok 3: Kluczowy pomysł, fetch() wewnątrz przeglądarki
 
-Sztuczka, która wszystko umożliwiła: zamiast wysyłać żądania HTTP z Node.js (co bez uwierzytelnienia by się nie udało), wywoływałem je **z wnętrza przeglądarki sterowanej przez Playwrighta**:
+Sztuczka, która wszystko umożliwiła: zamiast wysyłać żądania HTTP z Node.js (co bez uwierzytelnienia by się nie udało), wywoływałem je z wnętrza przeglądarki sterowanej przez Playwrighta:
 
 ```javascript
 const menuData = await page.evaluate(async () => {
@@ -103,7 +103,7 @@ const menuData = await page.evaluate(async () => {
 });
 ```
 
-`page.evaluate()` uruchamia kod wewnątrz Chromium. Przeglądarka ma już ciasteczka sesji po zalogowaniu — więc każde wywołanie `fetch()` jest w pełni uwierzytelnione. Serwer nie wie, że rozmawia ze skryptem.
+`page.evaluate()` uruchamia kod wewnątrz Chromium. Przeglądarka ma już ciasteczka sesji po zalogowaniu, więc każde wywołanie `fetch()` jest w pełni uwierzytelnione. Serwer nie wie, że rozmawia ze skryptem.
 
 ## Krok 4: Pobranie wszystkich opcji posiłków
 
@@ -121,7 +121,7 @@ const deliveries = order.deliveries
   .sort((a, b) => a.date.localeCompare(b.date));
 ```
 
-Dla każdego dnia dostawy i każdego posiłku wywołałem endpoint „switch”, żeby dostać dostępne alternatywy:
+Dla każdego dnia dostawy i każdego posiłku wywołałem endpoint "switch", żeby dostać dostępne alternatywy:
 
 ```javascript
 const switchData = await page.evaluate(async ({ deliveryId, deliveryMealId }) => {
@@ -131,12 +131,12 @@ const switchData = await page.evaluate(async ({ deliveryId, deliveryMealId }) =>
   return await res.json();
 }, { deliveryId: delivery.deliveryId, deliveryMealId: meal.deliveryMealId });
 
-const options = switchData.mealChangeOptions; // zwykle 2–3 opcje na posiłek
+const options = switchData.mealChangeOptions; // zwykle 2-3 opcje na posiłek
 ```
 
-## Krok 5: Punktacja „świadoma diety” przy wrzodziej zapaleniu jelita grubego
+## Krok 5: Punktacja uwzględniająca WZJG
 
-Mam wrzodziej zapalenie jelita grubego (WZJG) w remisji. Ogólne rady typu „zdrowe odżywianie” nie zawsze się sprawdzają — potrzebuję dużo białka, mało tłuszczu i cukru oraz unikania pewnych produktów także w remisji.
+Mam wrzodziejące zapalenie jelita grubego (WZJG) w remisji. Ogólne rady typu "zdrowe odżywianie" nie zawsze się sprawdzają. Potrzebuję dużo białka, mało tłuszczu i cukru oraz unikania pewnych produktów nawet w remisji.
 
 Napisałem funkcję punktacji:
 
@@ -149,21 +149,21 @@ function scoreForUC(meal) {
 
   const name = meal.menuMealName.toLowerCase();
 
-  // Ryby przeciwzapalne — duży bonus
+  // Ryby przeciwzapalne, duży bonus
   if (name.includes('mintaj') || name.includes('łosoś') ||
       name.includes('dorsz') || name.includes('tuńczyk')) score += 20;
 
-  // Chude drób — plus
+  // Chude drób, plus
   if (name.includes('kurczak') || name.includes('indyk')) score += 5;
 
   // Ostre potrawy mogą drażnić śluzówkę
   if (name.includes('curry') || name.includes('chili') ||
       name.includes('pikant')) score -= 15;
 
-  // Sosy pomidorowe bywają „triggerem”
+  // Sosy pomidorowe bywają triggerem
   if (name.includes('sos pomidorowy')) score -= 10;
 
-  // Wędliny przetworzone — twardy minus
+  // Wędliny przetworzone, twardy minus
   if (name.includes('boczek') || name.includes('pepperoni')) score -= 10;
 
   return score;
@@ -186,24 +186,22 @@ const result = await page.evaluate(async ({ deliveryId, deliveryMealId, dietCalo
 }, { deliveryId: c.deliveryId, deliveryMealId: c.deliveryMealId, dietCaloriesMealId: c.bestDietCaloriesMealId });
 ```
 
-Uruchomiłem to dla wszystkich 15 dni dostaw — **22 zmiany w około 30 sekund**. Zero błędów.
+Uruchomiłem to dla wszystkich 15 dni dostaw. 22 zmiany w około 30 sekund. Zero błędów.
 
 ## Czego się nauczyłem
 
-**1. Współczesna aplikacja webowa to dwie rzeczy: powłoka UI i API.**  
-Frontend React to w dużej mierze „ładna opakowka”. Rzeczywiste dane i logika biznesowa siedzą w API. Jeśli potrafisz rozmawiać z API bezpośrednio, omijasz UI.
+**1. Współczesna aplikacja webowa to dwie rzeczy: powłoka UI i API.**
+Frontend React to w dużej mierze ładne opakowanie. Rzeczywiste dane i logika biznesowa siedzą w API. Jeśli potrafisz rozmawiać z API bezpośrednio, omijasz UI.
 
-**2. Podsłuchiwanie ruchu sieciowego to najszybszy sposób, żeby zrozumieć aplikację.**  
+**2. Podsłuchiwanie ruchu sieciowego to najszybszy sposób, żeby zrozumieć aplikację.**
 Nie potrzebowałem dokumentacji. Obserwowanie tego, co przeglądarka faktycznie wysyła i odbiera, powiedziało mi wszystko w kilka minut.
 
-**3. `page.evaluate()` to most między automatyzacją a API.**  
-Uruchomienie `fetch()` wewnątrz Playwrighta oznacza, że masz uwierzytelnioną sesję przeglądarki „za darmo” — bez ręcznego zarządzania tokenami i ciasteczkami.
+**3. `page.evaluate()` to most między automatyzacją a API.**
+Uruchomienie `fetch()` wewnątrz Playwrighta oznacza, że masz uwierzytelnioną sesję przeglądarki za darmo, bez ręcznego zarządzania tokenami i ciasteczkami.
 
-**4. Najtrudniejsze nie było technicznie — tylko baner cookies.**  
-Szczerze: najbardziej irytujący element całego projektu.
+**4. Najtrudniejsza część nie była techniczna. Był nią baner cookies.**
+Szczerze, najbardziej irytujący element całego projektu.
 
 ---
 
-Pełny skrypt to około 80 linii JavaScriptu. Działa headless, loguje każdą zmianę i potrzebuje ~30 sekund na pełny miesiąc planowania posiłków zoptymalizowany pod mój stan zdrowia.
-
-Nieźle jak na niedzielne popołudnie.
+Pełny skrypt to około 80 linii JavaScriptu. Działa headless, loguje każdą zmianę i potrzebuje około 30 sekund na pełny miesiąc planowania posiłków zoptymalizowany pod mój stan zdrowia. Nieźle jak na niedzielne popołudnie.
