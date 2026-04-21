@@ -98,9 +98,11 @@ const ArticlePage = ({ meta, mdxSource }: ArticlePageProps) => {
 
 export default ArticlePage;
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const slugs = getCanonicalArticleSlugs();
-  const paths = slugs.map((slug) => ({ params: { slug } }));
+  const paths = (locales ?? ["en"]).flatMap((locale) =>
+    slugs.map((slug) => ({ params: { slug }, locale }))
+  );
   return { paths, fallback: false };
 };
 
