@@ -65,5 +65,6 @@
   "close_menu": "Zamknij menu",
   "blog_header": "Artykuły i notatki z mojej pracy",
   "blog_intro": "Tutaj będę publikował wpisy o testowaniu, automatyzacji i codziennej pracy inżyniera jakości.",
-  "blog_empty_state": "Pierwsze artykuły pojawią się wkrótce."
+  "blog_empty_state": "Pierwsze artykuły pojawią się wkrótce.",
+  "blog_back_to_articles": "Wróć do artykułów"
 }

@@ -1,23 +1,46 @@
 import Layout from "@/components/Layout";
-import { TransitionEffect } from "@/components/TransitionEffect";
 import SEO from "@/components/SEO";
+import { TransitionEffect } from "@/components/TransitionEffect";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { getAllArticles, getArticleBySlug, ArticleMeta } from "@/lib/articles";
+import { getCanonicalArticleSlugs, getArticleBySlug, ArticleMeta } from "@/lib/articles";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { setSuppressNextBlogEntry } from "@/lib/navState";
 
 type ArticlePageProps = {
   meta: ArticleMeta;
   mdxSource: MDXRemoteSerializeResult;
 };
 
+const isBlogListUrl = (url: string) =>
+  /^(\/en|\/pl)?\/blog\/?$/.test(url);
+
 const ArticlePage = ({ meta, mdxSource }: ArticlePageProps) => {
+  const { t } = useTranslation("common");
+  const router = useRouter();
+  const dateLocale = router.locale === "pl" ? "pl-PL" : "en-GB";
+  const [skipExit, setSkipExit] = useState(false);
+
+  useEffect(() => {
+    const handleRouteChangeStart = (url: string) => {
+      if (isBlogListUrl(url)) {
+        setSuppressNextBlogEntry(true);
+        setSkipExit(true);
+      }
+    };
+    router.events.on("routeChangeStart", handleRouteChangeStart);
+    return () => router.events.off("routeChangeStart", handleRouteChangeStart);
+  }, [router.events]);
+
   return (
     <>
       <SEO title={`${meta.title} - Marek Święchowicz`} description={meta.description} />
-      <TransitionEffect />
+      <TransitionEffect skipEntry skipExit={skipExit} />
       <main className="flex w-full items-center justify-center text-dark dark:text-light">
         <Layout>
           <div className="max-w-3xl mx-auto">
@@ -25,7 +48,7 @@ const ArticlePage = ({ meta, mdxSource }: ArticlePageProps) => {
               href="/blog"
               className="inline-flex items-center gap-2 text-sm text-dark/60 dark:text-light/60 hover:text-primary dark:hover:text-primaryDark transition-colors mb-10"
             >
-              ← Back to articles
+              ← {t("blog_back_to_articles")}
             </Link>
 
             <div className="flex flex-wrap gap-2 mb-6">
@@ -42,7 +65,7 @@ const ArticlePage = ({ meta, mdxSource }: ArticlePageProps) => {
             <h1 className="text-3xl md:text-5xl font-bold mb-4">{meta.title}</h1>
 
             <time className="text-sm text-dark/50 dark:text-light/50 block mb-12">
-              {new Date(meta.date).toLocaleDateString("en-GB", {
+              {new Date(meta.date).toLocaleDateString(dateLocale, {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -76,15 +99,15 @@ const ArticlePage = ({ meta, mdxSource }: ArticlePageProps) => {
 export default ArticlePage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = getAllArticles();
-  const paths = articles.map((a) => ({ params: { slug: a.slug } }));
+  const slugs = getCanonicalArticleSlugs();
+  const paths = slugs.map((slug) => ({ params: { slug } }));
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale || "en";
   const slug = context.params?.slug as string;
-  const article = getArticleBySlug(slug);
+  const article = getArticleBySlug(slug, locale);
   const mdxSource = await serialize(article.content);
 
   return {

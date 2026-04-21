@@ -6,14 +6,35 @@ import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { getAllArticles, ArticleMeta } from "@/lib/articles";
+import { suppressNextBlogEntry, setSuppressNextBlogEntry } from "@/lib/navState";
 
 type BlogProps = {
   articles: ArticleMeta[];
 };
 
+const isArticleUrl = (url: string) =>
+  /^(\/en|\/pl)?\/blog\/.+/.test(url);
+
 const Blog = ({ articles }: BlogProps) => {
   const { t } = useTranslation("common");
+  const router = useRouter();
+  const dateLocale = router.locale === "pl" ? "pl-PL" : "en-GB";
+
+  const skipEntry = suppressNextBlogEntry();
+  const [skipExit, setSkipExit] = useState(false);
+
+  useEffect(() => {
+    setSuppressNextBlogEntry(false);
+
+    const handleRouteChangeStart = (url: string) => {
+      setSkipExit(isArticleUrl(url));
+    };
+    router.events.on("routeChangeStart", handleRouteChangeStart);
+    return () => router.events.off("routeChangeStart", handleRouteChangeStart);
+  }, [router.events]);
 
   return (
     <>
@@ -24,7 +45,7 @@ const Blog = ({ articles }: BlogProps) => {
           "I will publish posts here about testing, automation, and day-to-day quality engineering work."
         )}
       />
-      <TransitionEffect />
+      <TransitionEffect skipEntry={skipEntry} skipExit={skipExit} />
       <main className="flex w-full items-center justify-center text-dark dark:text-light">
         <Layout>
           <AnimatedText
@@ -59,7 +80,7 @@ const Blog = ({ articles }: BlogProps) => {
                       {article.description}
                     </p>
                     <time className="text-sm text-dark/50 dark:text-light/50 group-hover:text-light/50 dark:group-hover:text-dark/50">
-                      {new Date(article.date).toLocaleDateString("en-GB", {
+                      {new Date(article.date).toLocaleDateString(dateLocale, {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
@@ -80,7 +101,7 @@ export default Blog;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale || "en";
-  const articles = getAllArticles();
+  const articles = getAllArticles(locale);
 
   return {
     props: {

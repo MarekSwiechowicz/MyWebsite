@@ -64,5 +64,6 @@
   "close_menu": "Close menu",
   "blog_header": "Articles and notes from my work",
   "blog_intro": "I will publish posts here about testing, automation, and day-to-day quality engineering work.",
-  "blog_empty_state": "First articles are coming soon."
+  "blog_empty_state": "First articles are coming soon.",
+  "blog_back_to_articles": "Back to articles"
 }
