@@ -66,5 +66,8 @@
   "blog_header": "Artykuły i notatki z mojej pracy",
   "blog_intro": "Tutaj będę publikował wpisy o testowaniu, automatyzacji i codziennej pracy inżyniera jakości.",
   "blog_empty_state": "Pierwsze artykuły pojawią się wkrótce.",
-  "blog_back_to_articles": "Wróć do artykułów"
+  "blog_back_to_articles": "Wróć do artykułów",
+  "catering_title": "Vikinga Meal Optimizer",
+  "catering_projectType": "Automatyzacja Playwright + API",
+  "catering_summary": "Automatyczny wybór posiłków w panelu cateringowym Kuchnia Vikinga przy użyciu Playwright i inżynierii odwrotnej API. Ocenia posiłki pod kątem odżywczym z regułami dostosowanymi do wrzodziejącego zapalenia jelita grubego."
 }
