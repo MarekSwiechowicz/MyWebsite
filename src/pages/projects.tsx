@@ -18,6 +18,7 @@ import CateringImage from "../../public/catering.png";
 import SaucedemoImage from "../../public/saucedemo.png";
 import PortfolioSite from "../../public/site.png";
 import NaniImage from "../../public/nani.png";
+import ClaudeNotifyImage from "../../public/claude-code-notify.png";
 
 interface ProjectProps {
   title: string;
@@ -132,6 +133,13 @@ const Projects: React.FC = () => {
             text={t("projects_header")}
           />
           <div className="grid grid-cols-12 gap-7">
+            <FeaturedProject
+              title={t("notify_title")}
+              projectType={t("notify_projectType")}
+              summary={t("notify_summary")}
+              link="https://github.com/MarekSwiechowicz/claude-code-notify"
+              image={ClaudeNotifyImage}
+            />
             <FeaturedProject
               title={t("CKEditor_title")}
               projectType={t("CKEditor_projectType")}

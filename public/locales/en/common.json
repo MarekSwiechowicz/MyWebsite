@@ -68,5 +68,8 @@
   "blog_back_to_articles": "Back to articles",
   "catering_title": "Vikinga Meal Optimizer",
   "catering_projectType": "Playwright + API automation",
-  "catering_summary": "Automated weekly meal selection on the Kuchnia Vikinga catering panel using Playwright and API reverse engineering. Scores meals nutritionally with rules tailored for ulcerative colitis in remission."
+  "catering_summary": "Automated weekly meal selection on the Kuchnia Vikinga catering panel using Playwright and API reverse engineering. Scores meals nutritionally with rules tailored for ulcerative colitis in remission.",
+  "notify_title": "claude-code-notify",
+  "notify_projectType": "Claude Code plugin (Node.js + PowerShell)",
+  "notify_summary": "Desktop notifications for Claude Code sessions: a toast with the session title when a session finishes or asks a question. On Windows a click on the toast switches to that session's Windows Terminal tab, also when the terminal runs as administrator, which other tools stop short of. Installs with two commands inside Claude Code."
 }
