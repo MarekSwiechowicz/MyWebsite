@@ -14,9 +14,11 @@ import GithubIcon from "../../public/githubIcon2.svg";
 import CKeditorImage from "../../public/CKeditor_image.png";
 import TMobileImage from "../../public/tmobile.png";
 import TMexpressImage from "../../public/tm.png";
+import CateringImage from "../../public/catering.png";
 import SaucedemoImage from "../../public/saucedemo.png";
 import PortfolioSite from "../../public/site.png";
 import NaniImage from "../../public/nani.png";
+import ClaudeNotifyImage from "../../public/claude-code-notify.png";
 
 interface ProjectProps {
   title: string;
@@ -132,6 +134,13 @@ const Projects: React.FC = () => {
           />
           <div className="grid grid-cols-12 gap-7">
             <FeaturedProject
+              title={t("notify_title")}
+              projectType={t("notify_projectType")}
+              summary={t("notify_summary")}
+              link="https://github.com/MarekSwiechowicz/claude-code-notify"
+              image={ClaudeNotifyImage}
+            />
+            <FeaturedProject
               title={t("CKEditor_title")}
               projectType={t("CKEditor_projectType")}
               summary={t("CKEditor_summary")}
@@ -161,6 +170,12 @@ const Projects: React.FC = () => {
               projectType={t("ewanani_projectType")}
               link="https://github.com/MarekSwiechowicz/EwaNani/tree/test"
               image={NaniImage}
+            />
+            <Project
+              title={t("catering_title")}
+              projectType={t("catering_projectType")}
+              link="https://github.com/MarekSwiechowicz/vikinga-meal-optimizer"
+              image={CateringImage}
             />
             <FeaturedProject
               title={t("portfolio_title")}
