@@ -1,0 +1,110 @@
+---
+title: "Jak sprawić, żeby klik w toast Windows przenosił na właściwą kartę terminala (historia pluginu do Claude Code)"
+date: "2026-09-28"
+description: "Pracuję na kilku sesjach Claude Code naraz i ciągle przegapiałem, która skończyła. Powiadomienie zajęło godzinę. Sprawienie, żeby klik trafiał w odpowiednią kartę Windows Terminal, w dodatku uruchomionego jako administrator, zajęło resztę dnia."
+tags: ["Claude Code", "Windows", "PowerShell", "Node.js", "Hooki", "Automatyzacja"]
+---
+
+Zwykle mam otwarte cztery albo pięć sesji Claude Code w Windows Terminal, po jednej na ticket. Każda pracuje kilka minut, więc przełączam się na coś innego i tracę wątek. Sesja od dziesięciu minut czeka na moją odpowiedź, a ja tego nie widzę. Kiedy już przychodziło powiadomienie, pisało „Claude Code” i nic więcej, więc i tak musiałem sprawdzić każdą kartę.
+
+Chciałem dwóch rzeczy: toastu z nazwą sesji, który zostaje na ekranie, aż go zamknę, oraz kliknięcia, które przenosi na właściwą kartę. Pierwsza część poszła szybko. Druga jest powodem, dla którego powstał ten wpis.
+
+Efekt to mały plugin, [claude-code-notify](https://github.com/MarekSwiechowicz/claude-code-notify). Tak wyglądało jego budowanie.
+
+![Toast z tytułem sesji, klik w Show przełącza na tę kartę Windows Terminal](https://raw.githubusercontent.com/MarekSwiechowicz/claude-code-notify/main/docs/demo.gif)
+
+## Krok 1: hook i toast
+
+Claude Code ma hooki: polecenia powłoki uruchamiane na zdarzeniach cyklu życia sesji. Liczą się dwa. `Stop` odpala się, gdy Claude kończy turę, `Notification` gdy prosi o uprawnienie albo zadaje pytanie. Każdy hook dostaje na stdin JSON z identyfikatorem sesji, katalogiem roboczym i ścieżką do transkryptu sesji.
+
+```json
+{
+  "hooks": {
+    "Stop": [{ "hooks": [{ "type": "command", "command": "bash notify.sh", "async": true }] }],
+    "Notification": [{ "matcher": "permission_prompt|elicitation_dialog",
+                       "hooks": [{ "type": "command", "command": "bash notify.sh" }] }]
+  }
+}
+```
+
+Najciekawszy jest tytuł sesji. Claude Code nazywa każdą sesję po pierwszej wymianie zdań i wstawia tę nazwę na kartę terminala. Ta sama nazwa siedzi w transkrypcie jako wpis `ai-title`, więc hook czyta końcówkę transkryptu, bierze ostatni `ai-title` i ostatnią wiadomość asystenta, i ma wszystko, czego potrzebuje użyteczny toast.
+
+Toasty na Windowsie ze skryptu idą przez WinRT w Windows PowerShell:
+
+```powershell
+[Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] | Out-Null
+$doc = New-Object Windows.Data.Xml.Dom.XmlDocument
+$doc.LoadXml($xml)   # <toast scenario="reminder"> ... </toast>
+$t = New-Object Windows.UI.Notifications.ToastNotification $doc
+$t.Tag = $sessionName   # nowy toast z tej samej sesji podmienia poprzedni
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($appId).Show($t)
+```
+
+`scenario="reminder"` trzyma toast na ekranie do kliknięcia. `Tag` pilnuje, żeby pięć sesji dawało pięć toastów, a nie stertę.
+
+Dwie rzeczy ugryzły mnie, zanim cokolwiek zadziałało. Skrypt hooka musi czytać stdin z limitem czasu, bo jeśli potok nie zostanie zamknięty, skrypt wisi do timeoutu hooka i toast nigdy nie wychodzi. A PowerShell uruchomiony jako proces odczepiony od rodzica kończy się kodem 0 i nic nie pokazuje, więc proces toastu musi zostać podpięty pod rodzica.
+
+## Krok 2: niech kliknięcie coś robi
+
+Toast może nieść atrybut `launch` z adresem URL. Jeśli adres używa własnego schematu zarejestrowanego w `HKCU\Software\Classes`, Windows uruchomi zarejestrowane polecenie po kliknięciu toastu. Bez uprawnień administratora.
+
+```powershell
+New-Item 'HKCU:\Software\Classes\claudefocus\shell\open\command' -Force
+Set-ItemProperty ... -Value 'wscript.exe //B "focus.vbs" "%1"'
+```
+
+Toast dostaje `launch="claudefocus:..."`, klik uruchamia `focus.ps1`, a skrypt musi znaleźć właściwą kartę. Windows Terminal wystawia karty przez UI Automation jako elementy `TabItem` w oknie klasy `CASCADIA_HOSTING_WINDOW_CLASS`, z tytułem karty jako nazwą. Dopasować tytuł, wywołać `SelectionItemPattern.Select()`, gotowe.
+
+Z mojej powłoki działało. Z toastu nie.
+
+## Krok 3: klik nie widzi kart
+
+Uruchomiony z toastu skrypt znajdował okno Windows Terminal i zero kart w środku. Ten sam skrypt, ta sama maszyna. Odpaliłem go przez `explorer.exe claudefocus:...`, czyli tak, jak faktycznie robi to klik w toast, i odtworzyłem problem: okno jest, kart brak.
+
+Spróbowałem drugiej drogi, `wt.exe -w 0 focus-tab -t N`, która przełącza karty po numerze bez UI Automation. Z toastu nie przełączała niczego. Otwierała zupełnie nowe okno terminala.
+
+Odpowiedzią było podniesienie uprawnień. Windows Terminal mam uruchomiony jako administrator. Proces odpalony z kliknięcia toastu działa na poziomie integralności Medium, a User Interface Privilege Isolation nie pozwala procesowi o niższej integralności czytać ani sterować oknem o wyższej. UI Automation widzi ramę, ale nie zawartość, a `wt.exe` nie dosięga podniesionej instancji, więc startuje własną. Nic nie było zepsute. Windows robił swoje.
+
+Dwa najpopularniejsze narzędzia do powiadomień dla Claude Code zatrzymują się dokładnie w tym miejscu i piszą to w README: na Windowsie klik wyciąga okno terminala, celowanie w kartę nie jest możliwe.
+
+## Krok 4: niech klika ktoś inny
+
+Sam hook działa wewnątrz terminala, więc dziedziczy jego poziom uprawnień. Jeśli hook uruchomi proces pomocniczy, ten pomocnik jest podniesiony wtedy, gdy terminal jest podniesiony, i może nim swobodnie sterować.
+
+Projekt wyszedł taki:
+
+1. Wysyłając toast, hook od razu ustala numer karty (z wnętrza terminala UI Automation działa) i uruchamia ukryty pomocnik `focus-watcher.ps1`, jeśli jeszcze nie działa. Nazwany mutex pilnuje, żeby był jeden, a pomocnik kończy się, gdy Windows Terminal się zamknie.
+2. Toast niesie `claudefocus:<numer karty>.<WT_SESSION>.<pid>.<tytuł>`.
+3. Handler kliknięcia w ogóle nie dotyka terminala. Zapisuje mały plik JSON z prośbą i kończy.
+4. Pomocnik czeka na ten plik, ustawia w swoim środowisku `WT_SESSION`, żeby `wt -w 0` celowało we właściwe okno, uruchamia `wt focus-tab -t N` i wyciąga okno na wierzch.
+
+```powershell
+if (Test-Path $req) {
+  $r = Get-Content $req -Raw | ConvertFrom-Json
+  Remove-Item $req
+  $env:WT_SESSION = $r.session
+  Start-Process wt.exe -ArgumentList @('-w', '0', 'focus-tab', '-t', "$($r.index)") -Wait
+  Bring-ToFront $r.wtpid
+}
+```
+
+`WT_SESSION` okazało się kluczowe. Bez niego `wt -w 0` z zewnętrznego procesu to rzut monetą, o które okno chodzi. Z nim `-w 0` znaczy „okno, do którego należy ta sesja”, czyli dokładnie to, o które chodzi.
+
+To była wersja, która działała z terminalem podniesionym i zwykłym, z prawdziwego kliknięcia.
+
+## Co z tego zostaje
+
+- Odtwarzaj ścieżkę błędu, nie ścieżkę sukcesu. Uruchamianie skryptu z mojej powłoki niczego nie dowodziło, bo moja powłoka też była podniesiona. `explorer.exe claudefocus:...` był uczciwym testem.
+- Kiedy API Windows zwraca puste wyniki bez błędu, sprawdź poziomy integralności, zanim sprawdzisz swój kod.
+- Pomocnik w tle uruchomiony po stronie uprzywilejowanej to czyste obejście UIPI i nie łamie zasad: nic nie zostaje podniesione, co nie było podniesione wcześniej.
+- Tytuły sesji się zmieniają. Numer karty jest ustalany w momencie powiadomienia, więc jeśli między toastem a kliknięciem przestawisz karty, trafisz o jedną obok. Da się z tym żyć.
+
+Plugin instaluje się dwiema komendami w Claude Code, a handler kliknięcia na Windowsie trzecią:
+
+```
+/plugin marketplace add MarekSwiechowicz/claude-code-notify
+/plugin install notify@claude-code-notify
+/notify:setup
+```
+
+Kod, README i demo są w [repozytorium](https://github.com/MarekSwiechowicz/claude-code-notify). Jeśli używasz innego terminala i chcesz, żeby klik działał też tam, załóż issue i napisz, czego używasz.
